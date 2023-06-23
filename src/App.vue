@@ -14,6 +14,9 @@ import RefDom from './modules/playground/RefDom.vue'
 import InjectDemo from './modules/playground/InjectDemo.vue'
 import UserIndex from './modules/crud-demo/UserIndex.vue'
 
+import Counter from './modules/pinia-demo/MyCounter.vue'
+import BaiduSearch from './modules/pinia-demo/BaiduSearch.vue'
+
 
 // 注意this现在是为定义的哦
 console.log(this)
@@ -91,6 +94,12 @@ provide('app.changeAppName', changeAppName)
   <div>
     <h3>crud demo</h3>
     <UserIndex></UserIndex>
+  </div>
+
+  <div>
+    <h3>pinia Demo</h3>
+    <Counter></Counter>
+    <BaiduSearch></BaiduSearch>
   </div>
 
 </template>
