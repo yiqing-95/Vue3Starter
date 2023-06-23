@@ -14,18 +14,12 @@ export default defineConfig({
   server: {
     cors: true,
     open: true,
-    proxy: {
-        '/baidu': {
-            // 此处的写法，目的是为了 将 /baidu 替换成 https://www.baidu.com/
-            target: 'https://www.baidu.com/',
-            // 允许跨域
-            changeOrigin: true,
-            ws: true,
-            // pathRewrite: {
-            //     '^/baidu': ''
-            // }
-            // rewrite: (path)=> path.replace(/^\/baidu/,'')
-        }
+    proxy:{
+      '/api': {
+        target: 'https://www.baidu.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
     }
-}
+  }
 })

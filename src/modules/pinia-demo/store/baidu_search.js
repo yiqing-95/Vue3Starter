@@ -11,7 +11,7 @@ export const useBaiduStore = defineStore('baiduStore',()=>{
     const items = ref([])
 
     // axios.defaults.baseURL = 'https//www.baidu.com/s';
-    axios.defaults.baseURL = '/baidu';
+    axios.defaults.baseURL = '/api';
     // var instance = axios.create({
     //     // baseURL: 'https://api.example.com'
     //     // baseURL: 'https//www.baidu.com/s'
@@ -28,7 +28,7 @@ export const useBaiduStore = defineStore('baiduStore',()=>{
         //     console.log(err)
         // })
         axios({
-            url: '/baidu/s?wd=axios%20'
+            url: 's?wd=axios%20'
         }).then(res => {
             console.log(res)
         })
