@@ -7,7 +7,7 @@ const mockTableData = [
     {
         id: 1,
         date: '2016-05-03',
-        name: 'Tom',
+        name: 'Tom1',
         state: 'California',
         city: 'Los Angeles',
         address: 'No. 189, Grove St, Los Angeles',
@@ -17,7 +17,7 @@ const mockTableData = [
     {
         id: 2,
         date: '2016-05-02',
-        name: 'Tom',
+        name: 'Tom2',
         state: 'California',
         city: 'Los Angeles',
         address: 'No. 189, Grove St, Los Angeles',
@@ -27,7 +27,7 @@ const mockTableData = [
     {
         id: 3,
         date: '2016-05-04',
-        name: 'Tom',
+        name: 'Tom3',
         state: 'California',
         city: 'Los Angeles',
         address: 'No. 189, Grove St, Los Angeles',
@@ -108,7 +108,7 @@ const handleEdit = async (item)=>{
         </el-table>
     </div>
 
-    <Edit ref="editRef"></Edit>
+    <Edit ref="editRef" @on-saved="loadItems()"></Edit>
 </template>
 
 

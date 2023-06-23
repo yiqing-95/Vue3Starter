@@ -4,6 +4,7 @@ import { reactive, ref } from 'vue'
 // https://element-plus.org/zh-CN/component/dialog.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%86%85%E5%AE%B9
 
 const dialogTableVisible = ref(false)
+
 const dialogFormVisible = ref(false)
 const formLabelWidth = '140px'
 
@@ -19,18 +20,8 @@ const formLabelWidth = '140px'
         address: 'No. 189, Grove St, Los Angeles',
         zip: 'CA 90036',
         tag: 'Office',
-
-
-         name: '',
-  region: '',
-  date1: '',
-  date2: '',
-  delivery: false,
-  type: [],
-  resource: '',
-  desc: '',
  */
-
+// const form = ref({...})
 // const form = reactive({
 let form = reactive({
     id: 2,
@@ -48,6 +39,7 @@ const openDialog = (data) => {
     console.log(data)
      
     // api获取数据 或者用传递过来的数据填充表单数据
+    // 这里要做数据对考 不然会引起级联反应
     form = data
 
     dialogFormVisible.value = true
@@ -58,6 +50,21 @@ defineExpose({
     openDialog
 })
 
+const emit = defineEmits([
+    'on-saved'
+])
+
+const handleSave = ()=>{
+
+    // 接口调用 把用户当下修改后的数据传递到后端去 await api.xxxpost|put form
+
+    // 关闭对话框 
+    dialogFormVisible.value = false
+
+    console.log(form)
+    // 通知父组件更新完毕
+    emit('on-saved', {})
+}
 </script>
 
 <template>
@@ -111,7 +118,7 @@ defineExpose({
         <template #footer>
             <span class="dialog-footer">
                 <el-button @click="dialogFormVisible = false">Cancel</el-button>
-                <el-button type="primary" @click="dialogFormVisible = false">
+                <el-button type="primary" @click="handleSave()  ">
                     Confirm
                 </el-button>
             </span>
