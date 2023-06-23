@@ -12,7 +12,13 @@
 
 <template>
     <div>
+        <button @click="baiduStore.searchItems('vue') ">search items</button>
         hi baidu result: ...
+        <ul>
+            <li v-for="item in baiduStore.items" :key="item.id">
+              {{ item.id }} >> {{ item.name }}
+            </li>
+        </ul>
     </div>
 </template>
 
