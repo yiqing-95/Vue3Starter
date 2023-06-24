@@ -8,6 +8,22 @@
             "~/*":[
                 "src/*"
             ],
-        }
-    }
+        },
+        "target":"ES6",
+        "allowSyntheticDefaultImports":true ,
+         "types": [
+            "vue",
+            "webpack-env",
+            "jest"
+        ],
+    },
+    "resolveExtensions": [".js", ".vue", ".ts"], 
+    "exclude": [
+        "node_modules"
+        ,"**/node_modules/*" 
+        ,"*/node_modules" 
+        ,"dist"
+        ,"public"
+        ,"build"
+    ],
 }

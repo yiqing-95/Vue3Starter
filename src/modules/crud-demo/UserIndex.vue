@@ -34,7 +34,7 @@ const mockTableData = [
         zip: 'CA 90036',
         tag: 'Home',
     },
-    
+
 
 ];
 
@@ -69,34 +69,36 @@ onMounted(() => {
     loadItems()
 })
 
-const handleDelete = async (id)=>{
+const handleDelete = async (id) => {
     alert(id)
     // 异步调用接口
-    items.value = items.value.filter((item)=> item.id != id)
+    items.value = items.value.filter((item) => item.id != id)
     // 调用刷新方法
     // loadItems()
 }
 
 const editRef = ref(null)
-const handleEdit = async (item)=>{
+const handleEdit = async (item) => {
     alert(item.id)
 
     editRef.value.openDialog(item)
     // 回填数据 || 调用接口
-    
+
 }
 
 
 </script>
 
 <template>
-    <div>
-        <el-table :data="items" style="width: 100%">
+    <el-row :gutter="10">
+        <el-col :span="24"> 
+            
+            <el-table :data="items" style="">
             <el-table-column fixed prop="date" label="Date" width="150" />
             <el-table-column prop="name" label="Name" width="120" />
             <el-table-column prop="state" label="State" width="120" />
             <el-table-column prop="city" label="City" width="120" />
-            <el-table-column prop="address" label="Address" width="600" />
+            <el-table-column prop="address" label="Address" width="120" />
             <el-table-column prop="zip" label="Zip" width="120" />
             <el-table-column fixed="right" label="Operations" width="120">
                 <template #default="{ row }">
@@ -106,6 +108,13 @@ const handleEdit = async (item)=>{
                 </template>
             </el-table-column>
         </el-table>
+           
+        </el-col>
+        
+    </el-row>
+
+    <div>
+       
     </div>
 
     <Edit ref="editRef" @on-saved="loadItems()"></Edit>

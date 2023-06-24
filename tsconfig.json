@@ -1,0 +1,55 @@
+{
+
+    "vueCompilerOptions": {
+  
+      "experimentalDisableTemplateSupport": true // 去掉volar下el标签红色波浪线问题
+  
+    },
+  
+    "compilerOptions": {
+  
+      "target": "esnext",// 指定ECMAScript目标版本
+  
+      "module": "esnext",// 指定生成哪个模块系统代码
+  
+      "lib": ["esnext", "dom", "dom.iterable", "scripthost"] ,// 编译过程中需要引入的库文件的列表。
+  
+      "jsx": "preserve",// 支持jsx语法
+  
+      // 启用所有严格类型检查选项。
+  
+      // 启用 --strict相当于启用 --noImplicitAny, --noImplicitThis, --alwaysStrict，
+  
+      // --strictNullChecks和 --strictFunctionTypes和--strictPropertyInitialization。
+  
+      "strict": true ,
+  
+  
+      /* Module Resolution Options */
+  
+      "moduleResolution": "node" ,// 决定如何处理模块。
+  
+      "baseUrl": ".",// 解析非相对模块名的基准目录
+  
+      "paths": {
+  
+        "/@/*": ["src/*"]
+  
+      },// 模块名到基于 baseUrl的路径映射的列表。
+  
+      "types": ["vite/client"],// 要包含的类型声明文件名列表
+  
+      "allowSyntheticDefaultImports": true ,// 允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。
+  
+  
+      "experimentalDecorators": true, // 修饰器
+  
+      /* Advanced Options */
+  
+      "skipLibCheck": true, // 忽略所有的声明文件（ *.d.ts）的类型检查。
+  
+      "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
+  
+    }
+  
+  }

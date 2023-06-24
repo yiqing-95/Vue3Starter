@@ -14,6 +14,10 @@ export default defineConfig({
     }
   },
   server: {
+    
+    hmr:{
+      overlay: false
+    },
     cors: true,
     open: true,
     proxy:{
@@ -21,6 +25,11 @@ export default defineConfig({
         target: 'https://www.baidu.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      '/x_api': {
+        target: 'http://localhost:7086/index.php',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/x_api/, '')
       }
     }
   }
