@@ -7,6 +7,8 @@
     },
   
     "compilerOptions": {
+
+      "allowJs": true,
   
       "target": "esnext",// 指定ECMAScript目标版本
   
@@ -29,11 +31,11 @@
   
       "moduleResolution": "node" ,// 决定如何处理模块。
   
-      "baseUrl": ".",// 解析非相对模块名的基准目录
+      "baseUrl": "src",// 解析非相对模块名的基准目录
   
       "paths": {
   
-        "/@/*": ["src/*"]
+        "@/*": ["src/*"]
   
       },// 模块名到基于 baseUrl的路径映射的列表。
   
@@ -50,6 +52,21 @@
   
       "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   
-    }
+    },
+    "exclude": [
+      "node_modules"
+      ,"**/node_modules/*" 
+      ,"*/node_modules" 
+      ,"dist"
+      ,"public"
+      ,"build"
+    ],
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+
+    ]
   
   }

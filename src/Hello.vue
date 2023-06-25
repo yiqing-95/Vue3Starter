@@ -21,6 +21,8 @@ import BaiduSearch from './modules/pinia-demo/BaiduSearch.vue'
 // 注意this现在是为定义的哦
 console.log(this)
 
+
+
 const appName = ref('starter-vue3')
 setTimeout(() =>{appName.value = 'here i am changed 😂'}, 4000)
 const changeAppName = (name)=>{
@@ -55,11 +57,17 @@ watch(appStore,(newValue, oldValue)=> {
 })
 provide('app.changeAppName', changeAppName)
 
+// 根据条件添加类名称
+const showFlag = ref(false)
+setTimeout(()=>{
+  showFlag.value = true
+},4000)
+
 </script>
 
 <template>
   <h1>{{ appName }}</h1>
-  <div>
+  <div :class="{'bg-el': showFlag}">
     
     <el-row class="mb-4">
     <el-button>Default</el-button>
@@ -116,5 +124,9 @@ provide('app.changeAppName', changeAppName)
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.bg-el{
+  background-color: #F2F6FC;
 }
 </style>
