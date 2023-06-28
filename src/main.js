@@ -13,14 +13,16 @@ import {lazyPlugin} from '@/directives'
 import App from './App.vue'
 
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-const pinnia = createPinia()
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 
 
 const app = createApp(App)
 app.use(router)
 app.use(ElementPlus)
-app.use(pinnia)
+app.use(pinia)
 app.use(lazyPlugin)
 app.mount('#app')
 

@@ -21,6 +21,7 @@ const service = axios.create({
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
 
+  // 只要添加自定义header 请求就会变为非简单请求 会先做‘预起飞’请求的 OPTIONS
   config.headers["vue-from"] = 'axios'
   //  'Access-Control-Allow-Origin': '*'
   config.headers["Access-Control-Allow-Origin"] = '*'

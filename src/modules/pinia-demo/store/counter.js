@@ -35,5 +35,7 @@ export const useCounterStore2 = defineStore('counter2',()=>{
     return {
         count , increment, doubleCount
     }
+},{
+    persist: true
 })
 

@@ -29,6 +29,7 @@
 
 <template>
     <div>
+        <h3>MyCounter from pinia-demo</h3>
         <button @click="counter.increment()">+1</button>
         {{ counter.count }}
         {{ counter.doubleCount }}

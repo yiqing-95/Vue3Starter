@@ -29,12 +29,13 @@ import {useIntersectionObserver} from '@vueuse/core'
  * 注意解构时单词不要拼写错误了 😄 犯过这个错误哦 直接拷贝比较好
  * 
  * 还有使用指令时 好像要带 v- 前缀的
+ * 
  */
 export  const lazyPlugin = {
     install(app){
         console.log('laze is installed')
         // console.log(useIntersectionObserver)
-
+        // 这里是注册指令的地方 对于注册全局组件是同样方式 app.component('component-name',ComponentDefination)
         app.directive('my-lazy',{
             
             mounted(el,binding) {

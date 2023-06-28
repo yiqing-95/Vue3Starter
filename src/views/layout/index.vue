@@ -4,17 +4,32 @@ import LayoutNav from '@/views/layout/components/LayoutNav.vue'
 </script>
 
 <template>
+    <el-container>
+        <el-header>
 
+            <layoutNav></layoutNav>
+            <!-- <el-divider /> -->
+            <LayoutHeader></LayoutHeader>
+
+        </el-header>
+
+        <el-main>
+            this content area
+            <router-view></router-view>
+        </el-main>
+
+        <el-footer>Footer</el-footer>
+    </el-container>
     <div>
-        我是首页 
-        <layoutNav></layoutNav>
-        <LayoutHeader></LayoutHeader>
-        <router-view></router-view>
+
+
     </div>
 </template>
 
 
 
 <style lang="scss" scoped>
-
+.el-main{
+    margin-top: 5;
+}
 </style>

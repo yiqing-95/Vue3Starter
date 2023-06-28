@@ -1120,7 +1120,12 @@
   "resolved" "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz"
   "version" "2.3.1"
 
-"pinia@^2.1.4":
+"pinia-plugin-persistedstate@^3.1.0":
+  "integrity" "sha512-8UN+vYMEPBdgNLwceY08mi5olI0wkYaEb8b6hD6xW7SnBRuPydWHlEhZvUWgNb/ibuf4PvufpvtS+dmhYjJQOw=="
+  "resolved" "https://registry.npmjs.org/pinia-plugin-persistedstate/-/pinia-plugin-persistedstate-3.1.0.tgz"
+  "version" "3.1.0"
+
+"pinia@^2.0.0", "pinia@^2.1.4":
   "integrity" "sha512-vYlnDu+Y/FXxv1ABo1vhjC+IbqvzUdiUC3sfDRrRyY2CQSrqqaa+iiHmqtARFxJVqWQMCJfXx1PBvFs9aJVLXQ=="
   "resolved" "https://registry.npmjs.org/pinia/-/pinia-2.1.4.tgz"
   "version" "2.1.4"
