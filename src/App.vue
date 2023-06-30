@@ -33,10 +33,14 @@ watch(appStore,(newValue, oldValue)=> {
 </script>
 
 <template>
-  <router-view></router-view>
+  <div class="main-content">
+    <router-view></router-view>
+  </div>
 </template>
 
 <style scoped>
-
+.main-content{
+  overflow: auto;
+}
 
 </style>

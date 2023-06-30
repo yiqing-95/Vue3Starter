@@ -12,6 +12,9 @@ import ChildComponent from './modules/playground/ChildComponent.vue'
 import ChildComponent2 from './modules/playground/ChildComponent2.vue'
 import RefDom from './modules/playground/RefDom.vue'
 import InjectDemo from './modules/playground/InjectDemo.vue'
+import SyntacticSugarDemo from './modules/playground/SyntacticSugarDemo.vue'
+// import SyntacticSugarDemo2 from './modules/playground/SyntacticSugarDemo2.vue'
+
 import UserIndex from './modules/crud-demo/UserIndex.vue'
 
 import Counter from './modules/pinia-demo/MyCounter.vue'
@@ -67,6 +70,14 @@ setTimeout(()=>{
 
 <template>
   <h1>{{ appName }}</h1>
+
+  <div>
+    <h3>
+      语法糖
+    </h3>
+    <SyntacticSugarDemo></SyntacticSugarDemo>
+  </div>
+
   <div :class="{'bg-el': showFlag}">
     
     <el-row class="mb-4">
@@ -109,6 +120,8 @@ setTimeout(()=>{
     <Counter></Counter>
     <BaiduSearch></BaiduSearch>
   </div>
+
+
 
 </template>
 

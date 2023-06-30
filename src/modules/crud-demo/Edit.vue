@@ -40,6 +40,7 @@ const openDialog = (data) => {
      
     // api获取数据 或者用传递过来的数据填充表单数据
     // 这里要做数据对考 不然会引起级联反应
+    //  [JavaScript对象的拷贝](https://www.jianshu.com/p/a615efed434a)
     form = data
 
     dialogFormVisible.value = true
