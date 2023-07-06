@@ -1,26 +1,37 @@
-import {fileURLToPath} from 'node:url'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+
+import vueJsx from '@vitejs/plugin-vue-jsx' // Vue-jsx插件
+
 import path from 'node:path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    // 配置Vue-jsx插件
+    vueJsx({
+      // "include": ["src/**/*.vue", "src/**/*.tsx", "src/**/*.jsx", "src/**/*.ts", "src/**/*.js"]
+      // ,"exclude":["node_modules/**/*.*"],
+    })
+
+  ],
   resolve: {
     alias: {
       // '~': fileURLToPath(new URL('./src' ,import.meta.url))
-      '~': fileURLToPath(new URL('./src' ,import.meta.url)),
-      '@': fileURLToPath(new URL('./src' ,import.meta.url)),
+      '~': fileURLToPath(new URL('./src', import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     }
   },
   server: {
-    
-    hmr:{
+
+    hmr: {
       overlay: false
     },
     cors: true,
     open: true,
-    proxy:{
+    proxy: {
       '/api': {
         target: 'https://www.baidu.com',
         changeOrigin: true,

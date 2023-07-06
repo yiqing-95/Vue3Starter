@@ -13,6 +13,7 @@ import ChildComponent2 from './modules/playground/ChildComponent2.vue'
 import RefDom from './modules/playground/RefDom.vue'
 import InjectDemo from './modules/playground/InjectDemo.vue'
 import SyntacticSugarDemo from './modules/playground/SyntacticSugarDemo.vue'
+import JsxDemo from './modules/playground/JsxDemo.vue'
 // import SyntacticSugarDemo2 from './modules/playground/SyntacticSugarDemo2.vue'
 
 import UserIndex from './modules/crud-demo/UserIndex.vue'
@@ -70,6 +71,12 @@ setTimeout(()=>{
 
 <template>
   <h1>{{ appName }}</h1>
+
+  <div>
+    <h3>jsx demo</h3>
+<JsxDemo></JsxDemo>
+  </div>
+
 
   <div>
     <h3>

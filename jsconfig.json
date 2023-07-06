@@ -16,6 +16,7 @@
             "webpack-env",
             "jest"
         ],
+        // "jsx": "preserve",// 支持jsx语法
     },
     "resolveExtensions": [".js", ".vue", ".ts"], 
     "exclude": [
