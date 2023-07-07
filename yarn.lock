@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@antfu/utils@^0.7.2", "@antfu/utils@^0.7.4":
-  "integrity" "sha512-qe8Nmh9rYI/HIspLSTwtbMFPj6dISG6+dJnOguTlPNXtCvS2uezdxscVBb7/3DrmNbQK49TDqpkSQ1chbRGdpQ=="
-  "resolved" "https://registry.npmjs.org/@antfu/utils/-/utils-0.7.4.tgz"
-  "version" "0.7.4"
+"@antfu/utils@^0.7.4", "@antfu/utils@^0.7.5":
+  "integrity" "sha512-dlR6LdS+0SzOAPx/TPRhnoi7hE251OVeT2Snw0RguNbBSbjUHdWr0l3vcUUDg26rEysT89kCbtw1lVorBXLLCg=="
+  "resolved" "https://registry.npmjs.org/@antfu/utils/-/utils-0.7.5.tgz"
+  "version" "0.7.5"
 
 "@babel/code-frame@^7.22.5":
   "integrity" "sha512-Xmwn266vad+6DAqEB2A6V/CcZVp62BbwVmcOJc2RPuwih1kw02TjQvWVWlcKGbBPd+8/0V5DEkOcizRGYsspYQ=="
@@ -377,7 +377,7 @@
   "resolved" "https://registry.npmjs.org/@jridgewell/set-array/-/set-array-1.1.2.tgz"
   "version" "1.1.2"
 
-"@jridgewell/sourcemap-codec@^1.4.10", "@jridgewell/sourcemap-codec@^1.4.13":
+"@jridgewell/sourcemap-codec@^1.4.10", "@jridgewell/sourcemap-codec@^1.4.15":
   "integrity" "sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg=="
   "resolved" "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.15.tgz"
   "version" "1.4.15"
@@ -1059,10 +1059,10 @@
   "resolved" "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz"
   "version" "3.1.3"
 
-"fast-glob@^3.2.12":
-  "integrity" "sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w=="
-  "resolved" "https://registry.npmjs.org/fast-glob/-/fast-glob-3.2.12.tgz"
-  "version" "3.2.12"
+"fast-glob@^3.2.12", "fast-glob@^3.3.0":
+  "integrity" "sha512-ChDuvbOypPuNjO8yIDf36x7BlZX1smcUMTTcyoIjycexOxd6DFsKsg21qVBzEmr3G7fUKIRy2/psii+CIUt7FA=="
+  "resolved" "https://registry.npmjs.org/fast-glob/-/fast-glob-3.3.0.tgz"
+  "version" "3.3.0"
   dependencies:
     "@nodelib/fs.stat" "^2.0.2"
     "@nodelib/fs.walk" "^1.2.3"
@@ -1389,12 +1389,12 @@
   dependencies:
     "yallist" "^4.0.0"
 
-"magic-string@^0.30.0":
-  "integrity" "sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ=="
-  "resolved" "https://registry.npmjs.org/magic-string/-/magic-string-0.30.0.tgz"
-  "version" "0.30.0"
+"magic-string@^0.30.0", "magic-string@^0.30.1":
+  "integrity" "sha512-mbVKXPmS0z0G4XqFDCTllmDQ6coZzn94aMlb0o/A4HEHJCKcanlDZwYJgwnkmgD3jyWhUgj9VsPrfd972yPffA=="
+  "resolved" "https://registry.npmjs.org/magic-string/-/magic-string-0.30.1.tgz"
+  "version" "0.30.1"
   dependencies:
-    "@jridgewell/sourcemap-codec" "^1.4.13"
+    "@jridgewell/sourcemap-codec" "^1.4.15"
 
 "memoize-one@^6.0.0":
   "integrity" "sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw=="
@@ -1447,14 +1447,14 @@
   dependencies:
     "brace-expansion" "^1.1.7"
 
-"minimatch@^9.0.1":
-  "integrity" "sha512-0jWhJpD/MdhPXwPuiRkCbfYfSKp2qnn2eOc279qI7f+osl/l+prKSrvhg157zSYvx/1nmgn2NqdT6k2Z7zSH9w=="
-  "resolved" "https://registry.npmjs.org/minimatch/-/minimatch-9.0.1.tgz"
-  "version" "9.0.1"
+"minimatch@^9.0.1", "minimatch@^9.0.2":
+  "integrity" "sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg=="
+  "resolved" "https://registry.npmjs.org/minimatch/-/minimatch-9.0.3.tgz"
+  "version" "9.0.3"
   dependencies:
     "brace-expansion" "^2.0.1"
 
-"mlly@^1.2.0", "mlly@^1.3.0":
+"mlly@^1.2.0", "mlly@^1.4.0":
   "integrity" "sha512-ua8PAThnTwpprIaU47EPeZ/bPUVp2QYBbWMphUQpVdBI3Lgqzm5KZQ45Agm3YJedHXaIHl6pBGabaLSUPPSptg=="
   "resolved" "https://registry.npmjs.org/mlly/-/mlly-1.4.0.tgz"
   "version" "1.4.0"
@@ -1787,35 +1787,36 @@
   "resolved" "https://registry.npmjs.org/ufo/-/ufo-1.1.2.tgz"
   "version" "1.1.2"
 
-"unimport@^3.0.7":
-  "integrity" "sha512-AOt6xj3QMwqcTZRPB+NhFkyVEjCKnpTVoPm5x6424zz2NYYtCfym2bpJofzPHIJKPNIh5ko2/t2q46ZIMgdmbw=="
-  "resolved" "https://registry.npmjs.org/unimport/-/unimport-3.0.8.tgz"
-  "version" "3.0.8"
+"unimport@^3.0.14":
+  "integrity" "sha512-67Rh/sGpEuVqdHWkXaZ6NOq+I7sKt86o+DUtKeGB6dh4Hk1A8AQrzyVGg2+LaVEYotStH7HwvV9YSaRjyT7Uqg=="
+  "resolved" "https://registry.npmjs.org/unimport/-/unimport-3.0.14.tgz"
+  "version" "3.0.14"
   dependencies:
     "@rollup/pluginutils" "^5.0.2"
     "escape-string-regexp" "^5.0.0"
-    "fast-glob" "^3.2.12"
+    "fast-glob" "^3.3.0"
     "local-pkg" "^0.4.3"
     "magic-string" "^0.30.0"
-    "mlly" "^1.3.0"
+    "mlly" "^1.4.0"
     "pathe" "^1.1.1"
     "pkg-types" "^1.0.3"
     "scule" "^1.0.0"
     "strip-literal" "^1.0.1"
     "unplugin" "^1.3.1"
 
-"unplugin-auto-import@^0.16.4":
-  "integrity" "sha512-xdgBa9NAS3JG8HjkAZHSbGSMlrjKpaWKXGUzaF6RzEtr980RCl1t0Zsu0skUInNYrEQfqaHc7aGWPv41DLTK/w=="
-  "resolved" "https://registry.npmjs.org/unplugin-auto-import/-/unplugin-auto-import-0.16.4.tgz"
-  "version" "0.16.4"
+"unplugin-auto-import@^0.16.6":
+  "integrity" "sha512-M+YIITkx3C/Hg38hp8HmswP5mShUUyJOzpifv7RTlAbeFlO2Tyw0pwrogSSxnipHDPTtI8VHFBpkYkNKzYSuyA=="
+  "resolved" "https://registry.npmjs.org/unplugin-auto-import/-/unplugin-auto-import-0.16.6.tgz"
+  "version" "0.16.6"
   dependencies:
-    "@antfu/utils" "^0.7.2"
+    "@antfu/utils" "^0.7.5"
     "@rollup/pluginutils" "^5.0.2"
+    "fast-glob" "^3.3.0"
     "local-pkg" "^0.4.3"
-    "magic-string" "^0.30.0"
-    "minimatch" "^9.0.1"
-    "unimport" "^3.0.7"
-    "unplugin" "^1.3.1"
+    "magic-string" "^0.30.1"
+    "minimatch" "^9.0.2"
+    "unimport" "^3.0.14"
+    "unplugin" "^1.3.2"
 
 "unplugin-vue-components@^0.25.1":
   "integrity" "sha512-kzS2ZHVMaGU2XEO2keYQcMjNZkanDSGDdY96uQT9EPe+wqSZwwgbFfKVJ5ti0+8rGAcKHColwKUvctBhq2LJ3A=="
@@ -1833,12 +1834,12 @@
     "resolve" "^1.22.2"
     "unplugin" "^1.3.1"
 
-"unplugin@^1.3.1":
-  "integrity" "sha512-h4uUTIvFBQRxUKS2Wjys6ivoeofGhxzTe2sRWlooyjHXVttcVfV/JiavNd3d4+jty0SVV0dxGw9AkY9MwiaCEw=="
-  "resolved" "https://registry.npmjs.org/unplugin/-/unplugin-1.3.1.tgz"
-  "version" "1.3.1"
+"unplugin@^1.3.1", "unplugin@^1.3.2":
+  "integrity" "sha512-Lh7/2SryjXe/IyWqx9K7IKwuKhuOFZEhotiBquOODsv2IVyDkI9lv/XhgfjdXf/xdbv32txmnBNnC/JVTDJlsA=="
+  "resolved" "https://registry.npmjs.org/unplugin/-/unplugin-1.3.2.tgz"
+  "version" "1.3.2"
   dependencies:
-    "acorn" "^8.8.2"
+    "acorn" "^8.9.0"
     "chokidar" "^3.5.3"
     "webpack-sources" "^3.2.3"
     "webpack-virtual-modules" "^0.5.0"

@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 import vueJsx from '@vitejs/plugin-vue-jsx' // Vue-jsx插件
+import AutoImport from 'unplugin-auto-import/vite' // Vue-jsx插件
 
 import path from 'node:path'
 
@@ -14,6 +15,12 @@ export default defineConfig({
     vueJsx({
       // "include": ["src/**/*.vue", "src/**/*.tsx", "src/**/*.jsx", "src/**/*.ts", "src/**/*.js"]
       // ,"exclude":["node_modules/**/*.*"],
+    }),
+    AutoImport({
+      imports: [
+        'vue',
+        // 'vue-router'
+      ]
     })
 
   ],

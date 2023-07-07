@@ -12,6 +12,10 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 - Path Intellisense
 
 
+## 用到的依赖
+- unplugin-auto-import
+手写常用导入的函数 对象比较烦 就可以自动导入 加快开发效率
+> import AutoImport from 'unplugin-auto-import/vite'
 ## 好的项目
 - [vue-admin-better](https://github.com/chuzhixin/vue-admin-better)
 - https://element-plus-admin.cn

@@ -5,6 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 import Basics from './modules/playground/Basics.vue'
 import RefDemo from './modules/playground/RefDemo.vue'
+import ReactiveDemo from './modules/playground/ReactiveDemo.vue'
 import ComputedDemo from './modules/playground/ComputedDemo.vue'
 import WatchDemo from './modules/playground/WatchDemo.vue'
 import LifeCircleDemo from './modules/playground/LifeCircleDemo.vue'
@@ -71,6 +72,11 @@ setTimeout(()=>{
 
 <template>
   <h1>{{ appName }}</h1>
+
+  <div>
+    <ReactiveDemo></ReactiveDemo>
+  </div>
+
 
   <div>
     <h3>jsx demo</h3>
