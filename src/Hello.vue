@@ -5,6 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 import Basics from './modules/playground/Basics.vue'
 import RefDemo from './modules/playground/RefDemo.vue'
+import ToRefsDemo from './modules/playground/ToRefsDemo.vue'
 import ReactiveDemo from './modules/playground/ReactiveDemo.vue'
 import ComputedDemo from './modules/playground/ComputedDemo.vue'
 import WatchDemo from './modules/playground/WatchDemo.vue'
@@ -15,6 +16,7 @@ import RefDom from './modules/playground/RefDom.vue'
 import InjectDemo from './modules/playground/InjectDemo.vue'
 import SyntacticSugarDemo from './modules/playground/SyntacticSugarDemo.vue'
 import JsxDemo from './modules/playground/JsxDemo.vue'
+import SideNav from './modules/playground/layout/SideNav.vue'
 // import SyntacticSugarDemo2 from './modules/playground/SyntacticSugarDemo2.vue'
 
 import UserIndex from './modules/crud-demo/UserIndex.vue'
@@ -73,6 +75,26 @@ setTimeout(()=>{
 <template>
   <h1>{{ appName }}</h1>
 
+
+  <hr/>
+  <el-row>
+    
+    <el-col :span="8">
+      
+      <SideNav></SideNav>
+    </el-col>
+    
+    <el-col :span="16">
+      <!-- 这个是二级路由视窗占位 -->
+      <router-view></router-view>
+    </el-col>
+  </el-row>
+
+  <hr/>
+
+  <div>
+    <ToRefsDemo></ToRefsDemo>
+  </div>
   <div>
     <ReactiveDemo></ReactiveDemo>
   </div>

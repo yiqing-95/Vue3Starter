@@ -13,6 +13,8 @@ import Login from '@/views/login/index.vue'
 import Home from '@/views/home/index.vue'
 import Category from '@/views/category/index.vue'
 
+import helloRoutes from '@/modules/playground/routes'
+
 const routes = [{
     path:"/",
     component:Index,
@@ -33,7 +35,8 @@ const routes = [{
 }
 ,{
     path:"/hello",
-    component:Hello
+    component:Hello,
+    children: helloRoutes ,
 }
 ,{ 
     path: '/:pathMatch(.*)*', 

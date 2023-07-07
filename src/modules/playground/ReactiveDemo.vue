@@ -1,6 +1,6 @@
 
 <script setup>
-import {reactive} from 'vue'
+// import {reactive} from 'vue' // 测试下自动导入功能 
 
 /**
  * reactive 返回的是Proxy对象 代理类要求目标具有对象特征 所以常用在object ｜｜array类型上
