@@ -79,7 +79,7 @@ setTimeout(()=>{
   <hr/>
   <el-row>
     
-    <el-col :span="8">
+    <el-col :span="6">
       
       <SideNav></SideNav>
     </el-col>

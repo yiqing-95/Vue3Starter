@@ -19,3 +19,8 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 ## 好的项目
 - [vue-admin-better](https://github.com/chuzhixin/vue-admin-better)
 - https://element-plus-admin.cn
+
+## 参考
+
+- [https://github.com/sveltejs/kit](https://kit.svelte.dev/docs/introduction)
+svelte 框架

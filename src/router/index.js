@@ -9,6 +9,7 @@ import {
 import NotFound from '~/pages/404.vue'
 import Hello from '~/Hello.vue'
 import Index from '@/views/layout/index.vue'
+import About from '@/views/about/index.vue'
 import Login from '@/views/login/index.vue'
 import Home from '@/views/home/index.vue'
 import Category from '@/views/category/index.vue'
@@ -37,6 +38,21 @@ const routes = [{
     path:"/hello",
     component:Hello,
     children: helloRoutes ,
+}
+,{
+    path:"/about",
+    component:About,
+    beforeEnter: (to, from, next) => {
+        // ...
+        console.log('hi to about') ;
+        let cond = true ;
+        if(cond){
+            next()
+
+        }else{
+            next('/login') 
+        }
+    }
 }
 ,{ 
     path: '/:pathMatch(.*)*', 

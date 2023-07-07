@@ -78,14 +78,47 @@
                         <router-link to="jsx-demo">jsx-demo</router-link>
                     </span>
                 </el-menu-item>
+                
                 <el-menu-item index="10">
                     <el-icon>
                         <setting />
                     </el-icon>
                     <span>
-                        <router-link :to="{ path :'jsx-demo' }">jsx-demo2</router-link>
+                        <router-link :to="{ path :'watch-demo' }">watch-demo</router-link>
                     </span>
                 </el-menu-item>
+                <el-menu-item index="10">
+                    <el-icon>
+                        <setting />
+                    </el-icon>
+                    <span>
+                        <router-link :to="{ path :'watch-demo2' }">watch-demo2</router-link>
+                    </span>
+                </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="life-circle-demo2">life-circle-demo2</router-link>
+                        </span>
+                    </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="router-link-demo" append>router-link-demo</router-link>
+                        </span>
+                    </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="crud" append>crud</router-link>
+                        </span>
+                    </el-menu-item>
             </el-menu>
         </el-col>
 
