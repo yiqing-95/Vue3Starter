@@ -5,8 +5,10 @@ import A from './A.vue'
 import B from './B.vue'
 // import C from './C.vue'
 
+// 异步组件会被单独打包的📦
 const C = defineAsyncComponent(() => {
-   return import('./C.vue')
+  // 如果异步组件涉及网络请求 可能会考虑使用Suspense组件 
+  return import('./C.vue')
 })
 
 const target = ref(null)
@@ -15,12 +17,20 @@ const { stop } = useIntersectionObserver(target,
   ([{ isIntersecting }]) => {
     console.log(isIntersecting)
     if (isIntersecting) {
-       // 被监控的对象可见了 
-       targetIsVisible.value = true
+      // 被监控的对象可见了 
+
+      // 
+      setTimeout(() => {
+        loading.value = false  // 
+
+        targetIsVisible.value = true
+      }, 2000)
 
       stop()
     }
   })
+
+const loading = ref(true)
 
 </script>
 
@@ -33,7 +43,7 @@ const { stop } = useIntersectionObserver(target,
     </div>
 
     <!-- <C></C> -->
-    <div ref="target">
+    <div v-loading="loading" element-loading-text="Loading..." ref="target">
       <C v-if="targetIsVisible"></C>
     </div>
 

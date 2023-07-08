@@ -15,6 +15,8 @@ import TeleportsIndex from './teleports/Index.vue'
 
 import DynamicIndex from './dynamic/Main.vue'
 import AsyncIndex from './asyncs/Main.vue'
+import MixinIndex from './mixins/Main.vue'
+import ProvideIndex from './provide_inject/Main.vue'
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -34,6 +36,8 @@ const routes = [
     { path: 'teleports', component: TeleportsIndex },
     { path: 'dynamic', component: DynamicIndex },
     { path: 'asyncs', component: AsyncIndex },
+    { path: 'mixins', component: MixinIndex },
+    { path: 'provide-inject', component: ProvideIndex },
   ]
 
 export default routes 
