@@ -3,6 +3,9 @@
         <h3>crud index</h3>
 
         <View :model="model" @model-changed="handleModelChanged"></View>
+        <View v-model:msg="msg"></View>
+        <hr>
+        {{ msg }}
     </div>
 </template>
 
@@ -14,6 +17,7 @@ const model = ref({
     age: 18,
     gender: 'male',
 })
+const msg = ref('from parent')
 
 const handleModelChanged = (eventData)=>{
     console.log('[in index view]:', eventData)

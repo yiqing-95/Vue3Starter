@@ -5,8 +5,13 @@ const props = defineProps({
     model:{
         type: Object,
         default: {}
+    },
+    msg: {
+        type: String,
+        default: "",
     }
 })
+const {msg} = toRefs(props)
 
 console.log(props)
 // 解构出模型数据
@@ -18,7 +23,8 @@ setTimeout(()=>{
 
 // 定义事件
 let emit = defineEmits([
-    'modelChanged'
+    'modelChanged',
+    'update:msg'
 ])
 const handleClick = ()=>{
     model.value.age ++ 
@@ -28,12 +34,19 @@ const handleClick = ()=>{
     })
 }
 
+const handleChange = (event)=>{
+    emit('update:msg',event.target.value)
+    console.log(event)
+}
+
 </script>
 
 <template>
     <div>
         {{ model }}
         <button @click="handleClick"> click me </button>
+
+        <input type="text" @change="handleChange" :value="msg"/>
     </div>
 </template>
 
