@@ -10,6 +10,11 @@ import WatchDemo2 from './WatchDemo2.vue'
 import LifeCircleDemo2 from './LifeCircleDemo2.vue'
 import RouterLinkDemo from './RouterLinkDemo.vue'
 import CrudIndex from './crud/Index.vue'
+import SlotsIndex from './slots/Main.vue'
+import TeleportsIndex from './teleports/Index.vue'
+
+import DynamicIndex from './dynamic/Main.vue'
+import AsyncIndex from './asyncs/Main.vue'
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -25,6 +30,10 @@ const routes = [
     { path: 'life-circle-demo2', component: LifeCircleDemo2 },
     { path: 'router-link-demo', component: RouterLinkDemo },
     { path: 'crud', component: CrudIndex },
+    { path: 'slots', component: SlotsIndex },
+    { path: 'teleports', component: TeleportsIndex },
+    { path: 'dynamic', component: DynamicIndex },
+    { path: 'asyncs', component: AsyncIndex },
   ]
 
 export default routes 

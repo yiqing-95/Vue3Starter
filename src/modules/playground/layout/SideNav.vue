@@ -119,6 +119,38 @@
                             <router-link to="crud" append>crud</router-link>
                         </span>
                     </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="slots" append>slots</router-link>
+                        </span>
+                    </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="teleports" append>teleports</router-link>
+                        </span>
+                    </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="dynamic" append>dynamic</router-link>
+                        </span>
+                    </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="asyncs" append>asyncs</router-link>
+                        </span>
+                    </el-menu-item>
             </el-menu>
         </el-col>
 
