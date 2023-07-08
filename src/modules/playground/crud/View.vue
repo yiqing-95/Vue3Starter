@@ -1,6 +1,14 @@
 <script setup>
 // import {defineProps} from 'vue' // 编译器宏不需要导入
 
+import emitter from '@/plugins/Bus.js'
+
+onBeforeMount(() => {
+    emitter.on('crud-create',(e )=>{
+        console.log(e) 
+    })
+})
+
 const props = defineProps({
     model:{
         type: Object,
@@ -24,7 +32,7 @@ setTimeout(()=>{
 // 定义事件
 let emit = defineEmits([
     'modelChanged',
-    'update:msg'
+    'update:msg' // 这个用来应对父组件的v-model绑定
 ])
 const handleClick = ()=>{
     model.value.age ++ 
@@ -46,7 +54,7 @@ const handleChange = (event)=>{
         {{ model }}
         <button @click="handleClick"> click me </button>
 
-        <input type="text" @change="handleChange" :value="msg"/>
+        <input type="text" v-on:input="handleChange" :value="msg"/>
     </div>
 </template>
 

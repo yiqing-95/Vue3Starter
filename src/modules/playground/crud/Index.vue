@@ -6,11 +6,14 @@
         <View v-model:msg="msg"></View>
         <hr>
         {{ msg }}
+        <hr>
+        <Create></Create>
     </div>
 </template>
 
 <script setup>
 import View from './View.vue'
+import Create from './Create.vue'
 
 const model = ref({
     name: 'qing',

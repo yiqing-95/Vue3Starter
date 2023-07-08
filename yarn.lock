@@ -1454,6 +1454,11 @@
   dependencies:
     "brace-expansion" "^2.0.1"
 
+"mitt@^3.0.1":
+  "integrity" "sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw=="
+  "resolved" "https://registry.npmjs.org/mitt/-/mitt-3.0.1.tgz"
+  "version" "3.0.1"
+
 "mlly@^1.2.0", "mlly@^1.4.0":
   "integrity" "sha512-ua8PAThnTwpprIaU47EPeZ/bPUVp2QYBbWMphUQpVdBI3Lgqzm5KZQ45Agm3YJedHXaIHl6pBGabaLSUPPSptg=="
   "resolved" "https://registry.npmjs.org/mlly/-/mlly-1.4.0.tgz"
