@@ -42,6 +42,12 @@ service.interceptors.request.use(function (config) {
 });
 
 // 添加响应拦截器
+/**
+ * 这样做 可以让api统一处理响应错误 
+ * 因为是Promise 它有两种使用方法 
+ * - .then().catch()... ； catch方式需要自己处理错误 
+ * - async   这种用法 就用到了这里的错误统一处理 不用关注catch了 直接拿返回值
+ */
 service.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   // return response.data.data;
@@ -59,6 +65,9 @@ service.interceptors.response.use(function (response) {
     console.log(error.response.status);
     // 错误信息
     console.log(error.response.data.message);
+
+    // TODO：这里可以根据不同的响应码统一做处理 
+
   } else if (error.request) {
     // 没有收到响应
     console.log(error.request);

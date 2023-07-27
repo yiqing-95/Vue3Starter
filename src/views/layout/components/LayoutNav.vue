@@ -31,8 +31,14 @@
   </template>
   
   <script   setup>
+
   import { ref } from 'vue'
   
+  // 使用store数据
+  import { useMenuStore } from '@/stores/menuStore'
+  const store = useMenuStore()
+  console.log('[menu-store]:', store)
+
   const activeIndex = ref('1')
   const handleSelect = (key , keyPath ) => {
     console.log(key, keyPath)

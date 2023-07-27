@@ -1,6 +1,9 @@
 <script setup>
 import {ref, onMounted, provide, watch} from 'vue'
 
+// console.log('[import-meta]:',import.meta)
+// 打印下可用的环境变量 
+console.log('[import-meta]:',import.meta.env)
 // 注意this现在是为定义的哦
 console.log(this)
 
@@ -33,12 +36,20 @@ watch(appStore,(newValue, oldValue)=> {
 </script>
 
 <template>
-  <div class="main-content">
+  <div  class="bg-red-300 h-32 ">
+    hi tailwindcss
+  </div>
+
+  <div class="main-content container">
     <router-view></router-view>
   </div>
 </template>
 
+ 
+
 <style scoped>
+/* @import "bulma/sass/utilities/_all.sass"; */
+
 .main-content{
   overflow: auto;
 }

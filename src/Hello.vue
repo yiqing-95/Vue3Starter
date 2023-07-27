@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, provide, watch} from 'vue'
+import { ref, onMounted, provide, watch } from 'vue'
 
 import HelloWorld from './components/HelloWorld.vue'
 
@@ -31,23 +31,23 @@ console.log(this)
 
 
 const appName = ref('starter-vue3')
-setTimeout(() =>{appName.value = 'here i am changed 😂'}, 4000)
-const changeAppName = (name)=>{
-  appName.value = '改了新名字了 vue-starter'+ name
+setTimeout(() => { appName.value = 'here i am changed 😂' }, 4000)
+const changeAppName = (name) => {
+  appName.value = '改了新名字了 vue-starter' + name
 }
 
-const handleGetMessage = (event)=>{
+const handleGetMessage = (event) => {
   console.log('event obj from child: ', event)
 }
 
 const domRef1 = ref(null)
-onMounted(()=>{
-    console.log('[component ref:]', domRef1.value)
+onMounted(() => {
+  console.log('[component ref:]', domRef1.value)
 })
 
 // 做跨组件通讯功能
 provide('app-state', {
-   'version': '0.1'
+  'version': '0.1'
 })
 
 // NOTE 是不是可以用来做store功能 ？ [有了 Vue3 还要啥 Vuex,自定义 hooks给你实现数据共享和状态管理 ](https://juejin.cn/post/7054060160045547550)
@@ -56,41 +56,49 @@ const appStore = ref({
 })
 provide('app-store', appStore)
 // 监听变化
-watch(appStore,(newValue, oldValue)=> {
-    console.log('😂',newValue,'--->',oldValue)
-     
-},{
-    deep: true // NOTE: 递归监听的 注意性能问题 
+watch(appStore, (newValue, oldValue) => {
+  console.log('😂', newValue, '--->', oldValue)
+
+}, {
+  deep: true // NOTE: 递归监听的 注意性能问题 
 })
 provide('app.changeAppName', changeAppName)
 
 // 根据条件添加类名称
 const showFlag = ref(false)
-setTimeout(()=>{
+setTimeout(() => {
   showFlag.value = true
-},4000)
+}, 4000)
 
 </script>
 
 <template>
+  <div class="container">
+    <div class="notification is-primary">
+      This container is <strong>centered</strong> on desktop and larger viewports.
+    </div>
+  </div>
+
   <h1>{{ appName }}</h1>
 
 
-  <hr/>
+  <hr />
   <el-row>
-    
+
     <el-col :span="6">
-      
+
       <SideNav></SideNav>
     </el-col>
-    
+
     <el-col :span="16">
       <!-- 这个是二级路由视窗占位 -->
       <router-view></router-view>
     </el-col>
   </el-row>
 
-  <hr/>
+  <hr />
+
+  <hr />
 
   <div>
     <ToRefsDemo></ToRefsDemo>
@@ -102,7 +110,7 @@ setTimeout(()=>{
 
   <div>
     <h3>jsx demo</h3>
-<JsxDemo></JsxDemo>
+    <JsxDemo></JsxDemo>
   </div>
 
 
@@ -113,34 +121,34 @@ setTimeout(()=>{
     <SyntacticSugarDemo></SyntacticSugarDemo>
   </div>
 
-  <div :class="{'bg-el': showFlag}">
-    
+  <div :class="{ 'bg-el': showFlag }">
+
     <el-row class="mb-4">
-    <el-button>Default</el-button>
-    <el-button type="primary">Primary</el-button>
-    <el-button type="success">Success</el-button>
-    <el-button type="info">Info</el-button>
-    <el-button type="warning">Warning</el-button>
-    <el-button type="danger">Danger</el-button>
-  
-  </el-row>
+      <el-button>Default</el-button>
+      <el-button type="primary">Primary</el-button>
+      <el-button type="success">Success</el-button>
+      <el-button type="info">Info</el-button>
+      <el-button type="warning">Warning</el-button>
+      <el-button type="danger">Danger</el-button>
+
+    </el-row>
 
   </div>
   <HelloWorld msg="Vite + Vue" />
   ---
-  <Basics  />
+  <Basics />
   <RefDemo />
   <ComputedDemo />
   <br>
   watch 测试
   <WatchDemo />
 
-  <br> 
+  <br>
   <LifeCircleDemo></LifeCircleDemo>
   <ChildComponent message="someVal"></ChildComponent>
   <ChildComponent :message="appName"></ChildComponent>
   <ChildComponent2 @get-message="handleGetMessage"></ChildComponent2>
-   
+
   访问dom元素
   <RefDom ref="domRef1"></RefDom>
   <InjectDemo></InjectDemo>
@@ -155,9 +163,6 @@ setTimeout(()=>{
     <Counter></Counter>
     <BaiduSearch></BaiduSearch>
   </div>
-
-
-
 </template>
 
 <style scoped>
@@ -167,14 +172,16 @@ setTimeout(()=>{
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 
-.bg-el{
+.bg-el {
   background-color: #F2F6FC;
 }
 </style>

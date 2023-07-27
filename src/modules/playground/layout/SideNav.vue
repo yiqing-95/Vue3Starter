@@ -167,6 +167,14 @@
                             <router-link to="provide-inject" append>provide inject demo</router-link>
                         </span>
                     </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="store" append>pinia store demo</router-link>
+                        </span>
+                    </el-menu-item>
             </el-menu>
         </el-col>
 

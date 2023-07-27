@@ -17,6 +17,7 @@ import DynamicIndex from './dynamic/Main.vue'
 import AsyncIndex from './asyncs/Main.vue'
 import MixinIndex from './mixins/Main.vue'
 import ProvideIndex from './provide_inject/Main.vue'
+import StoreIndex from './store/Index.vue'
 
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
@@ -38,6 +39,7 @@ const routes = [
     { path: 'asyncs', component: AsyncIndex },
     { path: 'mixins', component: MixinIndex },
     { path: 'provide-inject', component: ProvideIndex },
+    { path: 'store', component: StoreIndex },
   ]
 
 export default routes 

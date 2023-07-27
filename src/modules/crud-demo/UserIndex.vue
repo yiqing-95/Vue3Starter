@@ -52,7 +52,7 @@ const items = ref(
     ])
 const loadItems = async () => {
     // 1.调用接口 
-    // 2. 改状态 真实场景 用api的返回值给这里重新赋值即可
+    // 2. 改状态 真实场景 用api的返回值给这里重新赋值即可 最好是对原对象进行push 不然改变了其响应式特点 ｜⚠️存疑！ 可以都试试 有人就直接改原值
     // items.value.push({
     //     date: '2016-05-02',
     //     name: 'Tom',
