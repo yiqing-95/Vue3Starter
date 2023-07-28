@@ -8,6 +8,8 @@ import './styles/style.css'
 // main.ts
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
+// TODO 引入locale :
+import locale from 'element-plus/lib/locale/lang/zh-cn'
 import 'element-plus/dist/index.css'
 
 import router from './router'
@@ -28,8 +30,13 @@ pinia.use(piniaPluginPersistedstate)
 const app = createApp(App)
 // app.use(bulma)
 app.use(router)
-app.use(ElementPlus)
+app.use(ElementPlus,{
+    locale,
+})
 app.use(pinia)
 app.use(lazyPlugin)
+// TODO: 这里可以注入
+// app.provide('$api',userApi) // 分别可以把各个模块的api根对象注入进去
+
 app.mount('#app')
 

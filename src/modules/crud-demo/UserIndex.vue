@@ -1,7 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted ,getCurrentInstance} from 'vue'
 
 import Edit from './Edit.vue'
+
+// TODO: 这里缺少搜索🔍表单的实现
+
 
 const mockTableData = [
     {
@@ -65,8 +68,12 @@ const loadItems = async () => {
     items.value = mockTableData
 }
 
+const app = getCurrentInstance()
+// console.log('[user-index]:', app) // 可以看下当前vue实例对象
 onMounted(() => {
     loadItems()
+    // TODO: api引入 可以使用局部 也可以使用全局挂载方式 还可以用依赖注入的方式 provide/inject 
+    // 全局需要先注册到 app.config.globalProperties 对象上 属性名称一般可以为api 用到的时候 需要从vue包中引入 getCurrentInstance
 })
 
 const handleDelete = async (id) => {
@@ -103,9 +110,58 @@ const handleCurrentChange = (val) => {
   console.log(`current page: ${val}`)
 }
 
+// # === 搜索逻辑 ===
+
+// FIXME: 这个是例子抄来的 暂时用到的
+const formInline = reactive({
+  user: '',
+  region: '',
+  date: '',
+})
+const searchForm = reactive({
+  name: '',
+  state: '', 
+  date: '',
+  city: 'Los Angeles',
+})
+
+const onSubmit = () => {
+  console.log('submit!')
+}
+
 </script>
 
 <template>
+      <el-row :gutter="10">
+        <el-form :inline="true" :model="searchForm" class="demo-form-inline">
+       <el-form-item label="name">
+         <el-input v-model="searchForm.name" placeholder="用户名" clearable />
+       </el-form-item>
+       <el-form-item label="city">
+         <el-select
+           v-model="searchForm.city"
+           placeholder="城市"
+           clearable
+         >
+           <el-option label="Zone one" value="shanghai" />
+           <el-option label="Zone two" value="beijing" />
+         </el-select>
+       </el-form-item>
+       <el-form-item label="Activity time">
+         <el-date-picker
+           v-model="searchForm.date"
+           type="date"
+           placeholder="Pick a date"
+           clearable
+         />
+       </el-form-item>
+       <el-form-item>
+         <el-button type="primary" @click="onSubmit">Query</el-button>
+       </el-form-item>
+     </el-form>
+    
+    </el-row>
+
     <el-row :gutter="10">
         <el-col :span="24">
 
@@ -148,4 +204,10 @@ const handleCurrentChange = (val) => {
 .pagination-block {
   margin-top: 10px;
 }
+
+
+.demo-form-inline .el-input {
+  --el-input-width: 220px;
+}
+
 </style>

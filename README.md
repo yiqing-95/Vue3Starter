@@ -17,6 +17,8 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 手写常用导入的函数 对象比较烦 就可以自动导入 加快开发效率
 > import AutoImport from 'unplugin-auto-import/vite'
 
+- 时间相关的 dayjs , moment 
+
 ## 可以搭配的css框架
 - Bulma
 - windcss
