@@ -2,7 +2,7 @@
 import * as echarts from 'echarts/core';
 // 引入柱状图图表，图表后缀都为 Chart
 // NOTE：这里按需引入的 需要什么引入什么组件 ，同时下面👇也要导入注册相应的组件
-import { BarChart } from 'echarts/charts';
+import { BarChart, LineChart } from 'echarts/charts';
 // 引入提示框，标题，直角坐标系，数据集，内置数据转换器组件，组件后缀都为 Component
 import {
   TitleComponent,
@@ -24,6 +24,7 @@ echarts.use([
   DatasetComponent,
   TransformComponent,
   BarChart,
+  LineChart,
   LabelLayout,
   UniversalTransition,
   CanvasRenderer
