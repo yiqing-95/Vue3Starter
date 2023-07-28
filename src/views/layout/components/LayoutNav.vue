@@ -7,9 +7,13 @@
       :ellipsis="false"
       @select="handleSelect"
     >
-      <el-menu-item index="0">LOGO</el-menu-item>
+      <el-menu-item index="0">
+        <RouterLink to="/" >首页 logo</RouterLink>
+        </el-menu-item>
       <div class="flex-grow" />
-      <el-menu-item index="1">Processing Center</el-menu-item>
+      <el-menu-item index="1">
+        <RouterLink to="/layouts" >布局测试</RouterLink>
+      </el-menu-item>
       <el-menu-item index="2">
         <RouterLink to="/category" >商品分类</RouterLink>
       </el-menu-item>

@@ -22,6 +22,9 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 - windcss
 - tailwindcss
 
+## 好用的工具🔧
+- rust 写的搜索工具 ``rg``
+
 ## 好的项目
 - [vue-admin-better](https://github.com/chuzhixin/vue-admin-better)
 - https://element-plus-admin.cn

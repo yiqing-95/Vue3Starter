@@ -15,6 +15,8 @@ import Home from '@/views/home/index.vue'
 import Category from '@/views/category/index.vue'
 
 import helloRoutes from '@/modules/playground/routes'
+import layoutRoutes from '@/modules/layouts-demo/routes'
+import Layout from '@/modules/layouts-demo/Index.vue'
 
 /**
  * 在组件中使用时 
@@ -57,6 +59,7 @@ const routes = [{
             path:'category',  
             component: Category,
         },
+       
     ]
 }
 ,{
@@ -68,6 +71,7 @@ const routes = [{
     component:Hello,
     children: helloRoutes ,
 }
+
 ,{
     path:"/about",
     component:About,
@@ -82,6 +86,11 @@ const routes = [{
             next('/login') 
         }
     }
+},
+{
+    path:"/layouts",
+    component:Layout,
+    children: layoutRoutes ,
 }
 ,{ 
     path: '/:pathMatch(.*)*', 

@@ -1,4 +1,8 @@
 
+
+
+import EchartsDemo from './EchartsDemo.vue'
+
 import Foo from './Foo.vue'
 import RefDemo from './RefDemo.vue'
 import Basics from './Basics.vue'
@@ -40,6 +44,7 @@ const routes = [
     { path: 'mixins', component: MixinIndex },
     { path: 'provide-inject', component: ProvideIndex },
     { path: 'store', component: StoreIndex },
+    { path: 'echarts', component: EchartsDemo },
   ]
 
 export default routes 
