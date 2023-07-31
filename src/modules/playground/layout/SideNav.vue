@@ -51,6 +51,14 @@
                         <setting />
                     </el-icon>
                     <span>
+                        <router-link to="ref-dom">ref dom demo</router-link>
+                    </span>
+                </el-menu-item>
+                <el-menu-item index="4">
+                    <el-icon>
+                        <setting />
+                    </el-icon>
+                    <span>
                         <router-link to="basics">basics</router-link>
                     </span>
                 </el-menu-item>
@@ -181,6 +189,14 @@
                         </el-icon>
                         <span>
                             <router-link to="echarts" append>echarts demo</router-link>
+                        </span>
+                    </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="wang-editor" append>WangEditor demo</router-link>
                         </span>
                     </el-menu-item>
             </el-menu>

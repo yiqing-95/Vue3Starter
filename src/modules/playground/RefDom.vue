@@ -25,12 +25,23 @@ defineExpose({
     someProtectedValue
 })
 
+
+// ## 动态ref？
+let listDom = [] // 不需要reactive｜ref么
+
+const getList = (el)=>{
+    listDom.push(el)
+}
+
 </script>
 
 <template>
     <div ref="domRef">
         ref dom demo
     </div>
+
+    <h3 :ref="getList" v-for="idx in 3">第 {{ idx }}</h3>
+    <button @click="listDom[1].innerHTML = '哈哈哈哈哈😄' ">测试下修改</button>
 </template>
 
 

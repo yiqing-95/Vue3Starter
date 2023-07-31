@@ -2,6 +2,11 @@
 
 /**
  * https://www.jianshu.com/p/a615efed434a
+ * [你不知道的JS拷贝](https://zhuanlan.zhihu.com/p/77575834)
+ * 
+ * - 都有提到 lodash库
+ * 
+ * - https://github.com/sttk/copy-props/
  */
 function deepClone(target){
     // 判断要处理的目标是数组还是对象

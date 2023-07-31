@@ -1,5 +1,19 @@
 <script setup>
-import { ref, onMounted ,getCurrentInstance} from 'vue'
+import { ref, onMounted, getCurrentInstance } from 'vue'
+// NOTE: 如果是按需引入的组件 需要引入对应的css才能显示样式哦
+import { ElMessage, ElMessageBox } from 'element-plus'
+
+// 引入图标
+import {
+  Check,
+  Delete,
+//   Edit,
+  Message,
+  Search,
+  Star,
+  Plus
+} from '@element-plus/icons-vue'
+
 
 import Edit from './Edit.vue'
 
@@ -77,11 +91,36 @@ onMounted(() => {
 })
 
 const handleDelete = async (id) => {
-    alert(id)
-    // 异步调用接口
-    items.value = items.value.filter((item) => item.id != id)
-    // 调用刷新方法
-    // loadItems()
+    ElMessageBox.confirm(
+        '确定删除该项数据?',
+        'Warning',
+        {
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            type: 'warning',
+        }
+    )
+        .then(() => {
+            // TODO: 这里调用后台api接口做真删除
+            // alert(id)
+            // 异步调用接口
+            items.value = items.value.filter((item) => item.id != id)
+            // 调用刷新方法 刷新是要刷当前页 当前搜索条件下的数据 并非只是跳到第一页哦😯 所以搜索条件也要传递过去
+            // 后端一般会处理删除页码范围问题 比如当前页最后一条数据删除后重新加载数据实际上会是前一页数据 或者第一页数据
+            // loadItems()
+
+            ElMessage({
+                type: 'success',
+                message: 'Delete completed',
+            })
+        })
+        .catch(() => {
+            ElMessage({
+                type: 'info',
+                message: 'Delete canceled',
+            })
+        })
+
 }
 
 const editRef = ref(null)
@@ -96,7 +135,7 @@ const handleEdit = async (item) => {
 // === 分页逻辑
 
 const currentPage = ref(4)
- 
+
 const pageSize4 = ref(100)
 
 const small = ref(false)
@@ -104,64 +143,85 @@ const background = ref(false)
 const disabled = ref(false)
 
 const handleSizeChange = (val) => {
-  console.log(`${val} items per page`)
+    console.log(`${val} items per page`)
 }
 const handleCurrentChange = (val) => {
-  console.log(`current page: ${val}`)
+    console.log(`current page: ${val}`)
 }
 
 // # === 搜索逻辑 ===
 
-// FIXME: 这个是例子抄来的 暂时用到的
+// FIXME: 这个是例子抄来的 暂时用不到了
 const formInline = reactive({
-  user: '',
-  region: '',
-  date: '',
+    user: '',
+    region: '',
+    date: '',
 })
-const searchForm = reactive({
-  name: '',
-  state: '', 
-  date: '',
-  city: 'Los Angeles',
+const searchForm = ref({
+    name: '',
+    state: '',
+    date: '',
+    city: 'Los Angeles',
 })
 
 const onSubmit = () => {
-  console.log('submit!')
+    console.log('[search]:', searchForm.value)
+}
+
+// [vue3+element-plus 弹框表单重置(resetFields)失效、无效解决](https://blog.csdn.net/qq_42071369/article/details/127297117)
+// [Vue3 | Element Plus resetFields不生效](https://blog.csdn.net/yimtcode/article/details/131034203)
+// [Vue Element Form表单 resetFields重置无效](https://blog.csdn.net/hdhsZero/article/details/124893542)
+const formRef = ref(null)
+const resetForm = (formEl) => {
+    alert('hi reset form')
+    if (!formEl) return
+
+    //   alert('ok!?')
+    // 在编辑时 重置表单的问题： 先打开dailog 再延迟传值（ 延迟是指在nextTick中做就好） 所谓的重置是设置为第一次的绑定值 
+    // 子组件也可以在关闭时做
+    formEl.resetFields()
+}
+
+// ## 创建功能
+const handleCreate = ()=> {
+    alert('hi creating')
 }
 
 </script>
 
 <template>
-      <el-row :gutter="10">
-        <el-form :inline="true" :model="searchForm" class="demo-form-inline">
-       <el-form-item label="name">
-         <el-input v-model="searchForm.name" placeholder="用户名" clearable />
-       </el-form-item>
-       <el-form-item label="city">
-         <el-select
-           v-model="searchForm.city"
-           placeholder="城市"
-           clearable
-         >
-           <el-option label="Zone one" value="shanghai" />
-           <el-option label="Zone two" value="beijing" />
-         </el-select>
-       </el-form-item>
-       <el-form-item label="Activity time">
-         <el-date-picker
-           v-model="searchForm.date"
-           type="date"
-           placeholder="Pick a date"
-           clearable
-         />
-       </el-form-item>
-       <el-form-item>
-         <el-button type="primary" @click="onSubmit">Query</el-button>
-       </el-form-item>
-     </el-form>
-    
+    <el-row :gutter="10">
+        <el-form :inline="true" :model="searchForm" class="demo-form-inline" ref="formRef">
+            <el-form-item label="name" prop="name">
+                <el-input v-model="searchForm.name" placeholder="用户名" clearable />
+            </el-form-item>
+            <el-form-item label="city" prop="city">
+                <el-select v-model="searchForm.city" placeholder="城市" clearable>
+                    <el-option label="Zone one" value="shanghai" />
+                    <el-option label="Zone two" value="beijing" />
+                </el-select>
+            </el-form-item>
+            <el-form-item label="Activity time" prop="date">
+                <el-date-picker v-model="searchForm.date" type="date" placeholder="Pick a date" clearable />
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="onSubmit">Query</el-button>
+                <el-button @click="resetForm(formRef)">Reset</el-button>
+            </el-form-item>
+        </el-form>
+
     </el-row>
 
+    <el-row :gutter="5">
+        <el-col :span="16">
+            <!-- 可以选择使用router-link 或者事件方式 -->
+            <el-button type="primary" :icon="Plus"  @click="handleCreate"> 添加</el-button>
+            <el-button type="danger" :icon="Delete">Danger</el-button>
+        </el-col>
+        <el-col :span="8">
+            <div class="grid-content ep-bg-purple" />
+        </el-col>
+    </el-row>
     <el-row :gutter="10">
         <el-col :span="24">
 
@@ -184,9 +244,10 @@ const onSubmit = () => {
         </el-col>
 
         <div class="pagination-block">
-            <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[100, 200, 300, 400]"
-                :small="small" :disabled="disabled" :background="background" layout="total, sizes, prev, pager, next, jumper"
-                :total="400" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
+            <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize"
+                :page-sizes="[100, 200, 300, 400]" :small="small" :disabled="disabled" :background="background"
+                layout="total, sizes, prev, pager, next, jumper" :total="400" @size-change="handleSizeChange"
+                @current-change="handleCurrentChange" />
         </div>
 
     </el-row>
@@ -202,12 +263,11 @@ const onSubmit = () => {
 
 <style lang="scss" scoped>
 .pagination-block {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 
 .demo-form-inline .el-input {
-  --el-input-width: 220px;
+    --el-input-width: 220px;
 }
-
 </style>

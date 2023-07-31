@@ -1,10 +1,13 @@
 
 
+import FooForm from './FooForm.vue'
+import WangEditor from './WangEditor.vue'
 
 import EchartsDemo from './EchartsDemo.vue'
 
 import Foo from './Foo.vue'
 import RefDemo from './RefDemo.vue'
+import RefDom from './RefDom.vue'
 import Basics from './Basics.vue'
 import ComputedDemo from './ComputedDemo.vue'
 import InjectDemo from './InjectDemo.vue'
@@ -28,6 +31,7 @@ import StoreIndex from './store/Index.vue'
 const routes = [
     // { path: '', component: Foo },
     { path: 'ref-demo', component: RefDemo },
+    { path: 'ref-dom', component: RefDom },
     { path: 'basics', component: Basics },
     { path: 'computed-demo', component: ComputedDemo },
     { path: 'inject-demo', component: InjectDemo },
@@ -45,6 +49,8 @@ const routes = [
     { path: 'provide-inject', component: ProvideIndex },
     { path: 'store', component: StoreIndex },
     { path: 'echarts', component: EchartsDemo },
+    // { path: 'wang-editor', component: WangEditor },
+    { path: 'wang-editor', component: FooForm },
   ]
 
 export default routes 

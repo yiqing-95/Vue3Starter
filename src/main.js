@@ -9,6 +9,7 @@ import './styles/style.css'
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 // TODO 引入locale :
+// 还可以使用ElConfigProvider 需要包裹整个router-view
 import locale from 'element-plus/lib/locale/lang/zh-cn'
 import 'element-plus/dist/index.css'
 

@@ -46,6 +46,10 @@ import Layout from '@/modules/layouts-demo/Index.vue'
  * items = ref([])
  * items.value = result.data // 直接触发响应式
  * 
+ * ## router 可以携带一些自定义数据 用来做一些特殊用途 比如点击子路由时父菜单高亮
+ * 如： meta{ activeMenu: 'parentPath' }
+ * 然后菜单高亮时：:default-active="$route.meta.activeMenu || $route.path "
+ * 
  */
 const routes = [{
     path:"/",
