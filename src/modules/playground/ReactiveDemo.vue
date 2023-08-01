@@ -6,6 +6,8 @@
  * reactive 返回的是Proxy对象 代理类要求目标具有对象特征 所以常用在object ｜｜array类型上
  * 
  * 且访问时不需要.value 这个中间对象
+ * 
+ * note：最好给个key 防止修改时没有响应式监听了
  */
 
 const state = reactive({

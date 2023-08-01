@@ -1,5 +1,6 @@
 
 
+import EventDemo from './EventDemo.vue'
 import FooForm from './FooForm.vue'
 import WangEditor from './WangEditor.vue'
 
@@ -51,6 +52,7 @@ const routes = [
     { path: 'echarts', component: EchartsDemo },
     // { path: 'wang-editor', component: WangEditor },
     { path: 'wang-editor', component: FooForm },
+    { path: 'event-demo', component: EventDemo },
   ]
 
 export default routes 

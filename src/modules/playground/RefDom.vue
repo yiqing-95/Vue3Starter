@@ -22,7 +22,7 @@ onMounted(() => {
 const someProtectedValue = ref('hi') ;
 // 显式暴露内部属性 或者方法
 defineExpose({
-    someProtectedValue
+    someProtectedValue // ⚠️注意 ref会被自动解包
 })
 
 
@@ -41,7 +41,7 @@ const getList = (el)=>{
     </div>
 
     <h3 :ref="getList" v-for="idx in 3">第 {{ idx }}</h3>
-    <button @click="listDom[1].innerHTML = '哈哈哈哈哈😄' ">测试下修改</button>
+    <el-button @click="listDom[1].innerHTML = '哈哈哈哈哈😄' ">测试下修改</el-button>
 </template>
 
 

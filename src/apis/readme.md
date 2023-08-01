@@ -14,3 +14,5 @@ Promise的调用 js中有两种方法
     直接拿请求成功的结果
 
 ⚠️注意 平常的方法 加async修饰也是没问题的 就是里面可以不出现await 对promise的调用
+
+[可以看看这里👀 有简单描述](https://www.eggjs.org/zh-CN/intro/egg-and-koa)

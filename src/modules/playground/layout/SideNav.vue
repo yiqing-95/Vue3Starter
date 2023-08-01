@@ -199,6 +199,14 @@
                             <router-link to="wang-editor" append>WangEditor demo</router-link>
                         </span>
                     </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
+                            <router-link to="event-demo" append>Event demo</router-link>
+                        </span>
+                    </el-menu-item>
             </el-menu>
         </el-col>
 
