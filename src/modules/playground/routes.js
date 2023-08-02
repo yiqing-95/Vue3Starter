@@ -18,6 +18,7 @@ import WatchDemo2 from './WatchDemo2.vue'
 import LifeCircleDemo2 from './LifeCircleDemo2.vue'
 import RouterLinkDemo from './RouterLinkDemo.vue'
 import CrudIndex from './crud/Index.vue'
+import CrudIndex2 from './crud2/Index.vue'
 import SlotsIndex from './slots/Main.vue'
 import TeleportsIndex from './teleports/Index.vue'
 
@@ -42,6 +43,7 @@ const routes = [
     { path: 'life-circle-demo2', component: LifeCircleDemo2 },
     { path: 'router-link-demo', component: RouterLinkDemo },
     { path: 'crud', component: CrudIndex },
+    { path: 'crud2', component: CrudIndex2 },
     { path: 'slots', component: SlotsIndex },
     { path: 'teleports', component: TeleportsIndex },
     { path: 'dynamic', component: DynamicIndex },

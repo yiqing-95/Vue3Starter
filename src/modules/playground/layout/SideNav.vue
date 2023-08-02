@@ -132,6 +132,14 @@
                             <setting />
                         </el-icon>
                         <span>
+                            <router-link to="crud2" append>crud2</router-link>
+                        </span>
+                    </el-menu-item>
+                <el-menu-item index="6">
+                        <el-icon>
+                            <setting />
+                        </el-icon>
+                        <span>
                             <router-link to="slots" append>slots</router-link>
                         </span>
                     </el-menu-item>

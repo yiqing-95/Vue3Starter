@@ -8,8 +8,8 @@
     console.log('[event-demo]:handleClick', $event)
 
     emit(
-        'my-event',
-        {'someKey':'some-value'}
+        'my-event', // event name
+        {'someKey':'some-value'} // event data
     )
   }
 
