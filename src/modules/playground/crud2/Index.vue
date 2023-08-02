@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-import eventBus from './eventBus'
 
 import { shallowRef, ref } from 'vue'
 import GridView from './_gridview.vue'
@@ -32,7 +31,6 @@ const changeListType = (tpy) =>{
     }
 }
 
-eventBus.$emit('data', {key:'valuex'})
 
 </script>
 

@@ -13,6 +13,8 @@ import ElementPlus from 'element-plus'
 import locale from 'element-plus/lib/locale/lang/zh-cn'
 import 'element-plus/dist/index.css'
 
+import Breadcrumb from '@/components/Breadcrumb.vue'
+
 import router from './router'
 import {lazyPlugin} from '@/directives'
 
@@ -29,6 +31,8 @@ pinia.use(piniaPluginPersistedstate)
 
 
 const app = createApp(App)
+// 全局组件注册
+app.component('Breadcrumb',Breadcrumb)
 // app.use(bulma)
 app.use(router)
 app.use(ElementPlus,{

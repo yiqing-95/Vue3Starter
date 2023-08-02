@@ -92,6 +92,7 @@ setTimeout(() => {
 
     <el-col :span="16">
       <!-- 这个是二级路由视窗占位 -->
+      <Breadcrumb></Breadcrumb>
       <router-view></router-view>
     </el-col>
   </el-row>

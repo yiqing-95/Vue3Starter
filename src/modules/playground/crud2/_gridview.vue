@@ -1,9 +1,6 @@
 <script setup>
-import eventBus from './eventBus'
-  
-eventBus.$on('data',(data)=>{
-    console.log('hii')
-})
+
+
 
 </script>
 
