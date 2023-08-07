@@ -1,8 +1,13 @@
 <script setup>
 
-  import {useAttrs} from 'vue'
+import { useAttrs } from 'vue'
+import { inject } from 'vue'
 
-  const attrs = useAttrs()
+let dataProvider = inject('dataProvider')
+
+console.log('[listview]:', dataProvider)
+
+const attrs = useAttrs()
 
 
 </script>
@@ -12,12 +17,10 @@
         list view
         attributes: {{ $attrs }}
         {{ attrs }}
-       parent: {{ $parent }}
+        parent: {{ $parent }}
     </div>
 </template>
 
 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

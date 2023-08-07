@@ -2,7 +2,7 @@
     <el-breadcrumb :separator-icon="ArrowRight">
       <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
       <el-breadcrumb-item v-for="item in navs" :key="item.path" :to="{path: item.path}">
-       {{ item.mata?.title ?? item.path }}
+       {{ item.meta?.title ?? item.name }}
      </el-breadcrumb-item>
        
     </el-breadcrumb>
@@ -31,7 +31,7 @@
 
     let routes = route.matched
     // 第一个路由推入一个根路由
-    routes[0].path = '/'
+    // routes[0].path = '/'
 
     return routes
   })

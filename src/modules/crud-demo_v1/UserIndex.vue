@@ -15,7 +15,8 @@ import {
 } from '@element-plus/icons-vue'
 
 
-import FormDialog from './FormDialog.vue'
+import Edit from './Edit.vue'
+import Create from './Create.vue'
 
 // TODO: 这里缺少搜索🔍表单的实现
 
@@ -123,31 +124,22 @@ const handleDelete = async (id) => {
 
 }
 
-
-const dialogRef = ref(null)
-const isEdit = ref(false)
-const dialogTitle = ref('创建')
-/**  ## 创建功能 */
-const handleCreate = async () => {
-    alert('creating')
-    isEdit.value = false
-    dialogTitle.value = '创建'
-
-    dialogRef.value.openDialog()
-    // 回填数据 || 调用接口
-    
-}
-
+const editRef = ref(null)
 const handleEdit = async (item) => {
     alert(item.id)
-    isEdit.value = true
-    dialogTitle.value = '修改'
 
-
-    dialogRef.value.openDialog(item)
+    editRef.value.openDialog(item)
     // 回填数据 || 调用接口
 
-    // dialogRef.value.setForm  Model(item)
+}
+/**  ## 创建功能 */
+const createRef = ref(null)
+const handleCreate = async () => {
+    alert('creating')
+
+    createRef.value.openDialog()
+    // 回填数据 || 调用接口
+
 }
 
  
@@ -294,7 +286,8 @@ const handleSelectionChange = (val) => {
 
     </div>
 
-    <FormDialog ref="dialogRef" :isEdit="isEdit" :title="dialogTitle"></FormDialog>
+    <Edit ref="editRef" @on-saved="loadItems()"></Edit>
+    <Create ref="createRef" @on-saved="loadItems()"></Create>
 </template>
 
 

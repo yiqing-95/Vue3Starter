@@ -35,3 +35,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 - [https://github.com/sveltejs/kit](https://kit.svelte.dev/docs/introduction)
 svelte 框架
+- [Solution to develop server-driven, client-rendered applications ](https://github.com/hybridly/hybridly)
+
+- [前端低代码框架](https://github.com/baidu/amis)
+- [ng-form](...)

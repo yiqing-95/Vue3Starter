@@ -2,6 +2,21 @@ import axios from "axios"
 // import { toast } from '~/composables/util'
 // import { getToken } from '~/composables/auth'
 
+import {ElLoading} from 'element-plus'
+let loading = null ;
+const startLoading = () => {
+  const options = {
+    lock: true,
+    text: '加载中',
+    background: 'rgba( 0,0,0,0.7)'
+  }
+
+  loading = ElLoading.service(options)
+}
+const endLoading = ()=> {
+  loading.close()
+}
+
 // 有一就有二 如果是不同的业务可以有不同的baseURL 总之就是想办法少写重复代码
 const service = axios.create({
   // baseURL:"/x_api",
@@ -20,6 +35,8 @@ const service = axios.create({
 
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
+
+  startLoading() // 显示加载中...
 
   // 只要添加自定义header 请求就会变为非简单请求 会先做‘预起飞’请求的 OPTIONS
   config.headers["vue-from"] = 'axios'
@@ -49,12 +66,16 @@ service.interceptors.request.use(function (config) {
  * - async   这种用法 就用到了这里的错误统一处理 不用关注catch了 直接拿返回值
  */
 service.interceptors.response.use(function (response) {
+  endLoading() // 结束锁屏
+
   // 对响应数据做点什么
   // return response.data.data;
 
   return response
 
 }, function (error) {
+  endLoading() // 结束锁屏
+
   // 对响应错误做点什么
 
   // toast(error.response.data.msg || "请求失败","error")
