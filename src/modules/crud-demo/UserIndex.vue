@@ -1,7 +1,9 @@
 <script setup>
-import { ref, onMounted, getCurrentInstance } from 'vue'
+import { ref, onMounted, getCurrentInstance ,toRaw} from 'vue'
 // NOTE: 如果是按需引入的组件 需要引入对应的css才能显示样式哦
 import { ElMessage, ElMessageBox } from 'element-plus'
+
+import dayjs from 'dayjs'
 
 // 引入图标
 import {
@@ -129,7 +131,7 @@ const isEdit = ref(false)
 const dialogTitle = ref('创建')
 /**  ## 创建功能 */
 const handleCreate = async () => {
-    alert('creating')
+    // alert('creating')
     isEdit.value = false
     dialogTitle.value = '创建'
 
@@ -139,7 +141,7 @@ const handleCreate = async () => {
 }
 
 const handleEdit = async (item) => {
-    alert(item.id)
+    // alert(item.id)
     isEdit.value = true
     dialogTitle.value = '修改'
 
@@ -150,14 +152,53 @@ const handleEdit = async (item) => {
     // dialogRef.value.setForm  Model(item)
 }
 
- 
+const handleSave = async ({isEidt, form})=>{
+    console.log('[handle-save]:',isEdit)
+    console.log('[handle-save]2:',form)
+    console.log('[handle-save]2:',toRaw(form))
+    // let form = toRaw
+
+    if(isEdit.value){
+        // 更新对象
+
+        // 1. 获取当前索引
+        let index = items.value.findIndex(item=>{
+            // console.log('---',item.id, form.id)
+           return item.id === form.id
+        })
+        console.log('[handle-save][edit]:',index)
+        // items.value[index] = {...toRaw(form)}
+        items.value[index] = {...form}
+
+    }else{
+        console.log('[handel-save]')
+        // 新建对象
+        let maxId = 0
+        items.value.forEach(element => {
+            if(element.id> maxId){
+                maxId = element.id
+            }
+        })
+        console.log('[max-id]:', maxId)
+        form.id = maxId+1
+
+        let rawForm = toRaw(form)
+        rawForm.date = dayjs(rawForm.date).format('YYYY-MM-DD')
+        console.log('[new-data]:',rawForm)
+        // items.value.push(rawForm)
+        items.value.push({...rawForm})
+        console.log('[table-data:]',items.value)
+        
+    }
+
+}
 
 
 // === 分页逻辑
 
 const currentPage = ref(4)
 
-const pageSize4 = ref(100)
+const pageSize = ref(100)
 
 const small = ref(false)
 const background = ref(false)
@@ -187,6 +228,17 @@ const searchForm = ref({
 
 const onSubmit = () => {
     console.log('[search]:', searchForm.value)
+    const searchData = searchForm.value 
+
+    if(searchData.name.length > 0){
+        
+        // 在当前数据集合中过滤
+        items.value = items.value.filter(item=>{
+            return item.name.match(searchData.name)
+        })
+    }else{
+        loadItems()
+    }
 }
 
 // [vue3+element-plus 弹框表单重置(resetFields)失效、无效解决](https://blog.csdn.net/qq_42071369/article/details/127297117)
@@ -220,8 +272,52 @@ const toggleSelection = (rows) => {
     }
 }
 const handleSelectionChange = (val) => {
-    multipleSelection.value = val
-    console.log(val)
+    // multipleSelection.value = val
+    // console.log('[handleSelectionChange]:' ,val)
+    let ids = []
+    val.forEach((item,idx)=>{
+        ids.push(item.id)
+    })
+    multipleSelection.value = ids
+    // console.log('[handleSelectionChange]:' , multipleSelection.value )
+}
+
+const handleDeleteSelection = ()=>{
+    ElMessageBox.confirm(
+        '确定删除所选数据?',
+        'Warning',
+        {
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            type: 'warning',
+        }
+    )
+        .then(() => {
+            // TODO: 这里调用后台api接口做真删除
+            // alert(id)
+            // 异步调用接口
+
+            /** ## 遍历删除 */
+            multipleSelection.value.forEach(id => {
+                items.value = items.value.filter((item) => item.id != id)
+            })
+            multipleSelection.value = [] // 清空当前多选
+           
+            // 调用刷新方法 刷新是要刷当前页 当前搜索条件下的数据 并非只是跳到第一页哦😯 所以搜索条件也要传递过去
+            // 后端一般会处理删除页码范围问题 比如当前页最后一条数据删除后重新加载数据实际上会是前一页数据 或者第一页数据
+            // loadItems()
+
+            ElMessage({
+                type: 'success',
+                message: 'Delete completed',
+            })
+        })
+        .catch(() => {
+            ElMessage({
+                type: 'info',
+                message: 'Delete canceled',
+            })
+        })
 }
 
 </script>
@@ -253,7 +349,7 @@ const handleSelectionChange = (val) => {
         <el-col :span="16">
             <!-- 可以选择使用router-link 或者事件方式 -->
             <el-button type="primary" :icon="Plus" @click="handleCreate"> 添加</el-button>
-            <el-button type="danger" :icon="Delete">Danger</el-button>
+            <el-button type="danger" :icon="Delete" @click="handleDeleteSelection" v-if="multipleSelection.length > 0 ">删除多选</el-button>
         </el-col>
         <el-col :span="8">
             <div class="grid-content ep-bg-purple" />
@@ -272,7 +368,7 @@ const handleSelectionChange = (val) => {
                 <el-table-column prop="zip" label="Zip" width="120" />
                 <el-table-column fixed="right" label="Operations" width="120">
                     <template #default="{ row }">
-                        <el-button link type="primary" size="small" @click="handleClick">Detail</el-button>
+                        <el-button link type="primary" size="small" @click="()=>{}">Detail</el-button>
                         <el-button link type="primary" size="small" @click="handleEdit(row)">Edit</el-button>
                         <el-button link type="danger" size="small" @click="handleDelete(row.id)">delete</el-button>
                     </template>
@@ -294,7 +390,7 @@ const handleSelectionChange = (val) => {
 
     </div>
 
-    <FormDialog ref="dialogRef" :isEdit="isEdit" :title="dialogTitle"></FormDialog>
+    <FormDialog ref="dialogRef" :isEdit="isEdit" :title="dialogTitle" @on-saved="handleSave"></FormDialog>
 </template>
 
 
