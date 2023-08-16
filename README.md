@@ -30,8 +30,14 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 ## 好的项目
 - [vue-admin-better](https://github.com/chuzhixin/vue-admin-better)
 - https://element-plus-admin.cn
-
+- [Geeker-Admin ](https://github.com/HalseySpicy/Geeker-Admin/tree/master/src)
+- [ element-pro-components](https://github.com/tolking/element-pro-components)
+- [vue-pure-admin]()
 ## 参考
+- [菜鸟教程 😄](https://www.runoob.com/js/js-class-intro.html)
+- [w3school js基础知识](https://www.w3school.com.cn/jsref/jsref_obj_array.asp)
+- [ TypeScript 入门教程 ](https://github.com/xcatliu/typescript-tutorial)
+
 
 - [https://github.com/sveltejs/kit](https://kit.svelte.dev/docs/introduction)
 svelte 框架
@@ -39,3 +45,5 @@ svelte 框架
 
 - [前端低代码框架](https://github.com/baidu/amis)
 - [ng-form](...)
+
+

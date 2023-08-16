@@ -17,6 +17,7 @@ import Category from '@/views/category/index.vue'
 import helloRoutes from '@/modules/playground/routes'
 import layoutRoutes from '@/modules/layouts-demo/routes'
 import Layout from '@/modules/layouts-demo/Index.vue'
+import SlotDemo from '@/modules/slot-demo/Index.vue'
 
 /**
  * 在组件中使用时 
@@ -52,6 +53,7 @@ import Layout from '@/modules/layouts-demo/Index.vue'
  * 
  */
 const routes = [{
+    // NOTE: 有children的path最好以/结尾 不然出问题哦😯 
     path:"/",
     component:Index,
     meta:{
@@ -104,6 +106,10 @@ const routes = [{
     path:"/layouts",
     component:Layout,
     children: layoutRoutes ,
+},
+{
+    path:"/slots",
+    component:SlotDemo,
 }
 ,{ 
     // 早期版本是 path: '/:catchAll(.*) 还是这个正则名称随便写的

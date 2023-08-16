@@ -22,7 +22,9 @@
         <el-menu-item index="3-1">
             <RouterLink to="/hello/" >hello</RouterLink>
         </el-menu-item>
-        <el-menu-item index="3-2">item two</el-menu-item>
+        <el-menu-item index="3-2">
+          <RouterLink to="/slots" >slots</RouterLink>
+        </el-menu-item>
         <el-menu-item index="3-3">item three</el-menu-item>
         <el-sub-menu index="3-4">
           <template #title>item four</template>

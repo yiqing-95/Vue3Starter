@@ -18,6 +18,7 @@ import {
 
 
 import FormDialog from './FormDialog.vue'
+import DetailDialog from './DetailDialog.vue'
 
 // TODO: 这里缺少搜索🔍表单的实现
 
@@ -150,6 +151,12 @@ const handleEdit = async (item) => {
     // 回填数据 || 调用接口
 
     // dialogRef.value.setForm  Model(item)
+}
+const detailDialogRef = ref()
+const handleDetail = async (item) => {
+
+    detailDialogRef.value.openDialog(item)
+    
 }
 
 const handleSave = async ({isEidt, form})=>{
@@ -368,7 +375,7 @@ const handleDeleteSelection = ()=>{
                 <el-table-column prop="zip" label="Zip" width="120" />
                 <el-table-column fixed="right" label="Operations" width="120">
                     <template #default="{ row }">
-                        <el-button link type="primary" size="small" @click="()=>{}">Detail</el-button>
+                        <el-button link type="primary" size="small" @click="handleDetail(row)">Detail</el-button>
                         <el-button link type="primary" size="small" @click="handleEdit(row)">Edit</el-button>
                         <el-button link type="danger" size="small" @click="handleDelete(row.id)">delete</el-button>
                     </template>
@@ -391,6 +398,7 @@ const handleDeleteSelection = ()=>{
     </div>
 
     <FormDialog ref="dialogRef" :isEdit="isEdit" :title="dialogTitle" @on-saved="handleSave"></FormDialog>
+    <DetailDialog ref="detailDialogRef"  :title="'详情'" ></DetailDialog>
 </template>
 
 
