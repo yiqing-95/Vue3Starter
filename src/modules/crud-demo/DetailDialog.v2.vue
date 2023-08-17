@@ -147,6 +147,74 @@ const attributes = ref([
 
 ]);
 
+
+// prop is the key
+const getAttribute = (prop) => {
+  console.log("[getAttribute]:", prop)
+  const result = attributes.value.find(item => { return item.prop == prop })
+  console.log(result)
+  return result
+}
+const getAttributeByIndex = (idx) => {
+  console.log("[getAttributeByIndex]:", idx)
+  const result = attributes.value[idx]
+  console.log(result)
+  return result
+}
+
+
+
+
+const columns = [
+  //   {
+  //     key: 'date',
+  //     title: 'Date',
+  //     dataKey: 'date',
+  //     width: 150,
+  //     fixed: TableV2FixedDir.LEFT,
+  //     cellRenderer: ({ cellData: date }) => (
+  //       <ElTooltip content={dayjs(date).format('YYYY/MM/DD')}>
+  //         {
+  //           <span class="flex items-center">
+  //             <ElIcon class="mr-3">
+  //               <Timer />
+  //             </ElIcon>
+  //             {dayjs(date).format('YYYY/MM/DD')}
+  //           </span>
+  //         }
+  //       </ElTooltip>
+  //     ),
+  //   },
+  {
+    key: 'name',
+    title: 'Name',
+    dataKey: 'name',
+    width: 150,
+    align: 'center',
+    cellRenderer: ({ cellData: name }) => <ElTag>{name}</ElTag>,
+  },
+  {
+    key: 'value',
+    title: '值',
+    dataKey: 'value',
+    meta: {
+
+    },
+    cellRenderer: (obj) => {
+      console.log('[cellRender]:', obj)
+      const { cellData } = obj
+      return (<p> {cellData} </p>)
+
+    },
+    width: 150,
+    align: 'center',
+  },
+]
+
+const data = ref([])
+
+
+
 /** ## helper func ============ */
 
 
@@ -161,13 +229,50 @@ const props = defineProps({
 const dialogVisible = ref(false)
 const model = ref()
 const openDialog = (row) => {
+ 
+
   dialogVisible.value = true
 
   if (row) {
+
     nextTick(() => {
 
       model.value = row 
 
+      let result = []
+      /** 
+      Object.entries(row).forEach(item => {
+        result.push({
+          name: item[0],
+          value: item[1],
+        })
+      })
+      */
+      result = attributes.value.map((currentAttribute, index, arr) => {
+        // 允许只给一个属性
+        if (typeof currentAttribute == 'string') {
+          currentAttribute = {
+            prop: currentAttribute,
+          }
+        }
+
+        if (currentAttribute.prop && row[currentAttribute.prop]) {
+          // 存在prop属性 且row中有值
+          return {
+            name: currentAttribute.label || currentAttribute.prop,
+            value: row[currentAttribute.prop],
+          };
+        }
+        // return currentAttribute ;
+        // return row ;
+        return {
+          name: currentAttribute.label || currentAttribute.prop,
+          value: row,
+        };
+      })
+
+      data.value = result
+      console.log('[open::::]', result)
     })
   }
 
@@ -223,6 +328,46 @@ const detailTableRef = ref()
     >
 </DetailTable>
 
+
+    <el-table :data="data" style="width: 100%">
+      <el-table-column prop="name" label="Name" width="180">
+        <template #default="{ row, column, $index }">
+          <el-text class="mx-1" type="primary" tag="b">
+            {{ row.name }}
+          </el-text>
+          <h2>
+            <em>
+              {{ row.name }}
+            </em>
+
+          </h2>
+
+        </template>
+      </el-table-column>
+      <el-table-column prop="value" label="Value" width="180">
+        <template #default="{ row, $index }">
+          <!-- {{ row }} {{ $index }}
+          {{ row.name }}
+          {{ getAttribute(row.name) }} -->
+          <!-- render函数 (START) 使用内置的component组件可以支持h函数渲染和txs语法-->
+          <component v-if="getAttribute(row.name)?.render" :is="getAttribute(row.name).render" :row="row"
+            :index="$index" />
+          <component v-else-if="getAttributeByIndex($index)?.render" :is="getAttributeByIndex($index)?.render" :row="row"
+            :index="$index" />
+          <!-- render函数 (END) -->
+          <!-- 自定义slot (START) -->
+          <!-- slog 的名称就是attributes的某个项的slot属性指定的 -->
+          <slot v-else-if="getAttribute(row.name)?.slot" :name="getAttribute(row.name).slot" :row="row" :index="$index">
+          </slot>
+          <!-- 自定义slot (END) -->
+          <!-- 默认渲染 (START) -->
+          <span v-else>{{ row.value }}</span>
+
+
+        </template>
+      </el-table-column>
+
+    </el-table>
 
     <template #footer>
       <span class="dialog-footer">
