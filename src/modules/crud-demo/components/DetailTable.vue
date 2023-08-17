@@ -1,24 +1,19 @@
 <template>
   <el-table ref="table" :data="tableData" :height="height" :style="{ fontSize: fontSize, fontFamily: fontFamily }"
     :border="border" :stripe="stripe" :header-cell-style="{ 'text-align': headerCellStyle }" :cell-style="cellStyle"
-    @selection-change="handleSelectionChange">
+    @selection-change="handleSelectionChange"
+    >
     <!-- checkbox列 -->
-
 
     <!-- 序号列 -->
 
     <!-- attributes属性列 -->
     <el-table-column prop="name" label="Name" width="180">
         <template #default="{ row, column, $index }">
+
           <el-text class="mx-1" type="primary" tag="b">
             {{ row.name }}
           </el-text>
-          <h2>
-            <em>
-              {{ row.name }}
-            </em>
-
-          </h2>
 
         </template>
       </el-table-column>
@@ -35,7 +30,8 @@
           <!-- render函数 (END) -->
           <!-- 自定义slot (START) -->
           <!-- slog 的名称就是attributes的某个项的slot属性指定的 -->
-          <slot v-else-if="getAttribute(row.name)?.slot" :name="getAttribute(row.name).slot" :row="row" :index="$index">
+          <!-- <slot v-else-if="getAttribute(row.name)?.slot" :name="getAttribute(row.name).slot" :row="row" :index="$index"> -->
+          <slot v-else-if="getAttributeByIndex($index)?.slot" :name="getAttributeByIndex($index)?.slot" :row="row" :index="$index">
           </slot>
           <!-- 自定义slot (END) -->
           <!-- 默认渲染 (START) -->
@@ -57,8 +53,6 @@ const props = defineProps({
     type: Array,
     default: [],
   },
-
-
   attributes: {
     type: Array,
     default: [],
@@ -89,7 +83,6 @@ const tableData = computed(() => {
     row = model.value
 
   let result = []
- 
   
   result = attributes.value.map((currentAttribute, index, arr) => {
     // 允许只给一个属性
@@ -113,9 +106,9 @@ const tableData = computed(() => {
       value: row,
     };
   })
-  alert('end')
-  console.log('[detailtable:]', result)
-  console.log('[detailtable:]2', row)
+  // alert('end')
+  // console.log('[detailtable:]', result)
+  // console.log('[detailtable:]2', row)
   return result 
 }
 
