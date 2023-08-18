@@ -1,62 +1,160 @@
 <template>
-    <!-- /** generate for table:  abc_downloads | class: AbcDownloads */ -->
+    <!-- /** generate for table:  admin_menu | class: AdminMenu */ -->
 
 
 
     <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm" :size="formSize"
         status-icon>
 
-        <el-form-item label="Download ID" prop="download_id">
+        <el-row gutter="0">
 
-            <el-input v-model="ruleForm.download_id" /> </el-form-item>
+            <el-col :span="8">
 
-        <el-form-item label="Filename" prop="filename">
+                <el-form-item label="ID" prop="id">
 
-            <el-input v-model="ruleForm.filename" /> </el-form-item>
+                    <el-input v-model="ruleForm.id" /> </el-form-item>
 
-        <el-form-item label="Mask" prop="mask">
+            </el-col>
 
-            <el-input v-model="ruleForm.mask" /> </el-form-item>
 
-        <el-form-item label="Max Downloads" prop="max_downloads">
 
-            <el-input v-model="ruleForm.max_downloads" /> </el-form-item>
+            <el-col :span="8">
 
-        <el-form-item label="Expire Days" prop="expire_days">
+                <el-form-item label="Root" prop="root">
 
-            <el-input v-model="ruleForm.expire_days" /> </el-form-item>
+                    <el-input v-model="ruleForm.root" /> </el-form-item>
 
-        <el-form-item label="Sort Order" prop="sort_order">
+            </el-col>
 
-            <el-input v-model="ruleForm.sort_order" /> </el-form-item>
 
-        <el-form-item label="Activate" prop="activate">
 
-            <el-input v-model="ruleForm.activate" /> </el-form-item>
+            <el-col :span="8">
 
-        <el-form-item label="Activate Order Status ID" prop="activate_order_status_id">
+                <el-form-item label="Lft" prop="lft">
 
-            <el-input v-model="ruleForm.activate_order_status_id" /> </el-form-item>
+                    <el-input v-model="ruleForm.lft" /> </el-form-item>
 
-        <el-form-item label="Shared" prop="shared">
+            </el-col>
 
-            <el-input v-model="ruleForm.shared" /> </el-form-item>
 
-        <el-form-item label="Status" prop="status">
 
-            <el-input v-model="ruleForm.status" /> </el-form-item>
+            <el-col :span="8">
 
-        <el-form-item label="Date Added" prop="date_added">
+                <el-form-item label="Rgt" prop="rgt">
 
-            <el-input v-model="ruleForm.date_added" /> </el-form-item>
+                    <el-input v-model="ruleForm.rgt" /> </el-form-item>
 
-        <el-form-item label="Date Modified" prop="date_modified">
+            </el-col>
 
-            <el-input v-model="ruleForm.date_modified" /> </el-form-item>
+
+
+            <el-col :span="8">
+
+                <el-form-item label="Level" prop="level">
+
+                    <el-input v-model="ruleForm.level" /> </el-form-item>
+
+            </el-col>
+
+
+
+            <el-col :span="8">
+
+                <el-form-item label="Label" prop="label">
+
+                    <el-input v-model="ruleForm.label" /> </el-form-item>
+
+            </el-col>
+
+
+
+        </el-row>
+
+        <el-row gutter="0" v-show="isShow">
+
+            <el-col :span="8">
+
+                <el-form-item
+                    label="url 如 array(user/create); 或者user/create  //user/create 服务端处理时要判断是否转为array 要考虑如果采用前者分号的问题 eval函数"
+                    prop="url">
+
+                    <el-input v-model="ruleForm.url" /> </el-form-item>
+
+            </el-col>
+
+
+
+            <el-col :span="8">
+
+                <el-form-item label="url 后的请求参数" prop="params">
+
+                    <el-input v-model="ruleForm.params" /> </el-form-item>
+
+            </el-col>
+
+
+
+            <el-col :span="8">
+
+                <el-form-item label="Ajaxoptions" prop="ajaxoptions">
+
+                    <el-input v-model="ruleForm.ajaxoptions" /> </el-form-item>
+
+            </el-col>
+
+
+
+            <el-col :span="8">
+
+                <el-form-item label="Htmloptions" prop="htmloptions">
+
+                    <el-input v-model="ruleForm.htmloptions" /> </el-form-item>
+
+            </el-col>
+
+
+
+            <el-col :span="8">
+
+                <el-form-item label="Is Visible" prop="is_visible">
+
+                    <el-input v-model="ruleForm.is_visible" /> </el-form-item>
+
+            </el-col>
+
+
+
+            <el-col :span="8">
+
+                <el-form-item label="谁的树 系统默认的是后台树0 " prop="uid">
+
+                    <el-input v-model="ruleForm.uid" /> </el-form-item>
+
+            </el-col>
+
+
+
+            <el-col :span="8">
+
+                <el-form-item label="归类码表示用途的 一般只需要标记根的用途即可 也可以考虑用eav 但考虑到查询问题 所以引入了此字段" prop="group_code">
+
+                    <el-input v-model="ruleForm.group_code" /> </el-form-item>
+
+            </el-col>
+
+
+
+
+
+        </el-row>
 
 
 
         <el-form-item>
+
+            <el-button class="arrow" :icon="isShow ? ArrowUp : ArrowDown" @click="isShow = !isShow">
+
+            </el-button>
 
             <el-button type="primary" @click="submitForm(ruleFormRef)">Create</el-button>
 
@@ -74,6 +172,14 @@
 import { reactive, ref } from 'vue'
 
 // import type { FormInstance, FormRules } from 'element-plus'
+
+
+
+// 引入图标
+
+import { ArrowUp, ArrowDown } from '@element-plus/icons-vue'
+
+
 
 /*
  
@@ -95,33 +201,39 @@ interface RuleForm {
  
 }
  
-interface AbcDownloads {
+interface AdminMenu {
  
-download_id: number,
+id: number,
  
-filename: string,
+root: number,
  
-mask: string,
+lft: number,
  
-max_downloads: number,
+rgt: number,
  
-expire_days: number,
+level: number,
  
-sort_order: number,
+label: string,
  
-activate: string,
+url: string,
  
-activate_order_status_id: number,
+params: string,
  
-shared: number,
+ajaxoptions: string,
  
-status: number,
+htmloptions: string,
  
-date_added: string,
+is_visible: number,
  
-date_modified: string
+uid: number,
+ 
+group_code: string
  
 }  */
+
+const isShow = ref(false);
+
+
 
 const formSize = ref('default')
 
@@ -135,35 +247,31 @@ const ruleForm = reactive(
 
     {
 
-        "download_id": null,
+        "id": null,
 
-        "filename": "",
+        "root": null,
 
-        "mask": "",
+        "lft": null,
 
-        "max_downloads": null,
+        "rgt": null,
 
-        "expire_days": null,
+        "level": null,
 
-        "sort_order": null,
+        "label": null,
 
-        "activate": null,
+        "url": null,
 
-        "activate_order_status_id": 0,
+        "params": null,
 
-        "shared": 0,
+        "ajaxoptions": null,
 
-        "status": 0,
+        "htmloptions": null,
 
-        "date_added": "0000-00-00 00:00:00",
+        "is_visible": 1,
 
-        "date_modified": {
+        "uid": 0,
 
-            "expression": "CURRENT_TIMESTAMP",
-
-            "params": []
-
-        }
+        "group_code": "sys_admin_menu"
 
     })
 
@@ -171,79 +279,7 @@ const ruleForm = reactive(
 
 const rules = reactive(
 
-    {
-
-        "sort_order": [
-
-            {
-
-                "required": true,
-
-                "message": "sort_order is requried",
-
-                "trigger": "blur",
-
-                "type": "integer"
-
-            }
-
-        ],
-
-        "activate": [
-
-            {
-
-                "required": true,
-
-                "message": "activate is requried",
-
-                "trigger": "blur",
-
-                "type": "string"
-
-            },
-
-            {
-
-                "max": 64,
-
-                "message": "max len should be 64",
-
-                "trigger": "blur"
-
-            }
-
-        ],
-
-        "filename": [
-
-            {
-
-                "max": 128,
-
-                "message": "max len should be 128",
-
-                "trigger": "blur"
-
-            }
-
-        ],
-
-        "mask": [
-
-            {
-
-                "max": 128,
-
-                "message": "max len should be 128",
-
-                "trigger": "blur"
-
-            }
-
-        ]
-
-    })
+    [])
 
 // const submitForm = async (formEl: FormInstance | undefined) => {
 
