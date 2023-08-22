@@ -2,20 +2,7 @@
 import { reactive, ref, toRefs, nextTick } from 'vue'
 import dayjs from 'dayjs'
 
-// @see https://blog.csdn.net/weixin_45291937/article/details/125523244
-// ⚠️ v-bind 可以透传绑定属性到底层或者slot组件 一股脑全传过去
 
-// @see https://blog.csdn.net/outsider76557/article/details/128933974
-
-// @see https://gitee.com/zhfyjeremy/vue3-vite-ts-template/tree/master/src/components
-
-// import {
-//   ElButton,
-//   ElIcon,
-//   ElTag,
-//   ElTooltip,
-//   TableV2FixedDir,
-// } from 'element-plus'
 import { Timer } from '@element-plus/icons-vue'
 // import { MyTableColumn } from './components/TableColumn.vue'
 import DetailTable from './components/DetailTable.vue'
@@ -171,7 +158,7 @@ const openDialog = (row) => {
   if (row) {
     nextTick(() => {
 
-      model.value = row 
+      model.value = row
 
     })
   }
@@ -210,37 +197,18 @@ const detailTableRef = ref()
 </script>
 
 <template>
-  <!-- FIXME: v2版本的表单 如果有滚动条 滚动时就会触发表单数据的加载！ -->
-  <el-dialog v-model="dialogVisible" :title="props.title" @close="handleClose" :before-close="handleBeforeClose">
-    <!--       
-        <el-table-v2
-    :columns="columns"
-    :data="data"
-    :width="300"
-    :height="400"
-    fixed
-  /> 
-  -->
-  <DetailTable
-      ref="detailTableRef"
-      :attributes="attributes"
-      :model="model"
-    >
-    <template #my_slot="{row, index}">
-     
-      hiiiiii
-      {{ index }}
-      
-    </template>
-</DetailTable>
+  <el-drawer v-model="dialogVisible" :title="title" size="65%">
 
+    <DetailTable ref="detailTableRef" :attributes="attributes" :model="model">
+      <template #my_slot="{ row, index }">
 
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button @click="handleCancel(formRef)">Cancel</el-button>
-      </span>
-    </template>
-  </el-dialog>
+        hiiiiii
+        {{ index }}
+
+      </template>
+    </DetailTable>
+
+  </el-drawer>
 </template>
   
  

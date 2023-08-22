@@ -18,9 +18,11 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 import router from './router'
 import {lazyPlugin} from '@/directives'
 
-
-
 import App from './App.vue'
+
+// 引入ElementPro
+import ElementPro from 'element-pro-components'
+import 'element-pro-components/lib/styles/index'
 
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
@@ -42,6 +44,8 @@ app.use(pinia)
 app.use(lazyPlugin)
 // TODO: 这里可以注入
 // app.provide('$api',userApi) // 分别可以把各个模块的api根对象注入进去
+
+app.use(ElementPro)
 
 app.mount('#app')
 

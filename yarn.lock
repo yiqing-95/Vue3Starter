@@ -302,7 +302,7 @@
   "resolved" "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.6.0.tgz"
   "version" "3.6.0"
 
-"@element-plus/icons-vue@^2.0.6":
+"@element-plus/icons-vue@^2.0.10", "@element-plus/icons-vue@^2.0.6":
   "integrity" "sha512-PSBn3elNoanENc1vnCfh+3WA9fimRC7n+fWkf3rE5jvv+aBohNHABC/KAR5KWPecxWxDTVT1ERpRbOMRcOV/vA=="
   "resolved" "https://registry.npmjs.org/@element-plus/icons-vue/-/icons-vue-2.1.0.tgz"
   "version" "2.1.0"
@@ -503,7 +503,7 @@
   dependencies:
     "@types/lodash" "*"
 
-"@types/lodash@*", "@types/lodash@^4.14.182":
+"@types/lodash@*", "@types/lodash@^4.14.182", "@types/lodash@^4.14.186":
   "integrity" "sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg=="
   "resolved" "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.195.tgz"
   "version" "4.14.195"
@@ -706,6 +706,16 @@
     "vue-demi" ">=0.14.5"
 
 "@vueuse/core@^9.1.0":
+  "integrity" "sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw=="
+  "resolved" "https://registry.npmjs.org/@vueuse/core/-/core-9.13.0.tgz"
+  "version" "9.13.0"
+  dependencies:
+    "@types/web-bluetooth" "^0.0.16"
+    "@vueuse/metadata" "9.13.0"
+    "@vueuse/shared" "9.13.0"
+    "vue-demi" "*"
+
+"@vueuse/core@^9.3.0":
   "integrity" "sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw=="
   "resolved" "https://registry.npmjs.org/@vueuse/core/-/core-9.13.0.tgz"
   "version" "9.13.0"
@@ -1325,7 +1335,7 @@
   "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.455.tgz"
   "version" "1.4.455"
 
-"element-plus@^2.3.6":
+"element-plus@^2.2.18", "element-plus@^2.3.6":
   "integrity" "sha512-h6TxclbaLUJxg/Bv5j/ZKsK+K5yadQliw5+R30HWyE69pXlqXTX24oYx+yw3pA4Dy+lqEDi5501FQ0CORk3OSA=="
   "resolved" "https://registry.npmjs.org/element-plus/-/element-plus-2.3.7.tgz"
   "version" "2.3.7"
@@ -1345,6 +1355,22 @@
     "lodash-unified" "^1.0.2"
     "memoize-one" "^6.0.0"
     "normalize-wheel-es" "^1.2.0"
+
+"element-pro-components@^1.2.12":
+  "integrity" "sha512-KOy8Ez9m+x+gKh7bEy/U33TLk6fKysZv5zNECXS4QRPXcaZvof/U9ycLtJgmfSfTopwCndg1QEid0vTypbhLrQ=="
+  "resolved" "https://registry.npmjs.org/element-pro-components/-/element-pro-components-1.2.12.tgz"
+  "version" "1.2.12"
+  dependencies:
+    "@element-plus/icons-vue" "^2.0.10"
+    "@types/lodash" "^4.14.186"
+    "@types/lodash-es" "^4.17.6"
+    "@vueuse/core" "^9.3.0"
+    "element-plus" "^2.2.18"
+    "lodash" "^4.17.21"
+    "lodash-es" "^4.17.21"
+    "lodash-unified" "^1.0.2"
+    "vue" "^3.2.40"
+    "vue-router" "^4.1.5"
 
 "enhanced-resolve@^5.15.0":
   "integrity" "sha512-LXYT42KJ7lpIKECr2mAXIaMldcNCh/7E0KBKOu4KSfkHmP+mZmSs+8V5gBAqisWBy0OO4W5Oyys0GO1Y8KtdKg=="
@@ -2509,6 +2535,11 @@
   "resolved" "https://registry.npmjs.org/scule/-/scule-1.0.0.tgz"
   "version" "1.0.0"
 
+"search-form-config@^1.2.1":
+  "integrity" "sha512-jaqRkl3Pt9dtFVWHwO2BE/8VCh6m2VPuer/04t9fj+ZzdkNLGelJksp1ATvRwOdLJlSwzOHnypKFd//4xwfIGQ=="
+  "resolved" "https://registry.npmjs.org/search-form-config/-/search-form-config-1.2.1.tgz"
+  "version" "1.2.1"
+
 "semver@^7.3.5":
   "integrity" "sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA=="
   "resolved" "https://registry.npmjs.org/semver/-/semver-7.5.4.tgz"
@@ -2887,14 +2918,14 @@
     "lodash" "^4.17.21"
     "semver" "^7.3.5"
 
-"vue-router@^4.2.2":
+"vue-router@^4.1.5", "vue-router@^4.2.2":
   "integrity" "sha512-9PISkmaCO02OzPVOMq2w82ilty6+xJmQrarYZDkjZBfl4RvYAlt4PKnEX21oW4KTtWfa9OuO/b3qk1Od3AEdCQ=="
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.2.4.tgz"
   "version" "4.2.4"
   dependencies:
     "@vue/devtools-api" "^6.5.0"
 
-"vue@^2.6.14 || ^3.3.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.5", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.47", "vue@2 || 3", "vue@3.3.4":
+"vue@^2.6.14 || ^3.3.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.5", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.40", "vue@^3.2.47", "vue@2 || 3", "vue@3.3.4":
   "integrity" "sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.3.4.tgz"
   "version" "3.3.4"

@@ -32,11 +32,18 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 - https://element-plus-admin.cn
 - [Geeker-Admin ](https://github.com/HalseySpicy/Geeker-Admin/tree/master/src)
 - [ element-pro-components](https://github.com/tolking/element-pro-components)
-- [vue-pure-admin]()
+- [vue-pure-admin]() 
+
+- [vue-pandora](https://github.com/yelingfeng/vue-pandora)
+- [ vxe-table vue 表单/表格解决方案 ](https://api.gitee.com/xuliangzhan_admin/vxe-table)
+- [meadmin-template](https://github.com/meadmin-cn/meadmin-template)
+    git 提交规范可以看看👀👀
 ## 参考
 - [菜鸟教程 😄](https://www.runoob.com/js/js-class-intro.html)
 - [w3school js基础知识](https://www.w3school.com.cn/jsref/jsref_obj_array.asp)
 - [ TypeScript 入门教程 ](https://github.com/xcatliu/typescript-tutorial)
+- [w3cschool 文档](https://www.w3cschool.cn/typescript/typescript-tutorial.html)
+- [阮一峰 es6 primer 教程](https://es6.ruanyifeng.com)
 
 
 - [https://github.com/sveltejs/kit](https://kit.svelte.dev/docs/introduction)

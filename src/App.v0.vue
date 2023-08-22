@@ -36,10 +36,20 @@ watch(appStore, (newValue, oldValue) => {
 </script>
 
 <template>
-  
+  <div class="common-layout">
+    <el-container>
+      <el-aside width="200px">Aside</el-aside>
+      <el-container>
+        <el-header>Header</el-header>
+        <el-main>
+          <div class="main-content container">
             <router-view></router-view>
-         
-            
+          </div>
+        </el-main>
+      </el-container>
+    </el-container>
+  </div>
+
 
 
   <el-backtop :right="100" :bottom="100" />

@@ -6,147 +6,97 @@
     <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules" label-width="120px" class="demo-ruleForm" :size="formSize"
         status-icon>
 
-        <el-row gutter="0">
+        <el-form-item label="ID" prop="id">
 
-            <el-col :span="8">
+            <el-input v-model="ruleForm.id" /> </el-form-item>
 
-                <el-form-item label="ID" prop="id">
 
-                    <el-input v-model="ruleForm.id" /> </el-form-item>
 
-            </el-col>
 
 
+        <el-form-item label="Root" prop="root">
 
-            <el-col :span="8">
+            <el-input v-model="ruleForm.root" /> </el-form-item>
 
-                <el-form-item label="Root" prop="root">
 
-                    <el-input v-model="ruleForm.root" /> </el-form-item>
 
-            </el-col>
 
 
+        <el-form-item label="Lft" prop="lft">
 
-            <el-col :span="8">
+            <el-input v-model="ruleForm.lft" /> </el-form-item>
 
-                <el-form-item label="Lft" prop="lft">
 
-                    <el-input v-model="ruleForm.lft" /> </el-form-item>
 
-            </el-col>
 
 
+        <el-form-item label="Rgt" prop="rgt">
 
-            <el-col :span="8">
+            <el-input v-model="ruleForm.rgt" /> </el-form-item>
 
-                <el-form-item label="Rgt" prop="rgt">
 
-                    <el-input v-model="ruleForm.rgt" /> </el-form-item>
 
-            </el-col>
 
 
+        <el-form-item label="Level" prop="level">
 
-            <el-col :span="8">
+            <el-input v-model="ruleForm.level" /> </el-form-item>
 
-                <el-form-item label="Level" prop="level">
 
-                    <el-input v-model="ruleForm.level" /> </el-form-item>
 
-            </el-col>
 
 
+        <el-form-item label="Label" prop="label">
 
-            <el-col :span="8">
+            <el-input v-model="ruleForm.label" /> </el-form-item>
 
-                <el-form-item label="Label" prop="label">
 
-                    <el-input v-model="ruleForm.label" /> </el-form-item>
 
-            </el-col>
 
 
+        <el-form-item
+            label="url 如 array(user/create); 或者user/create  //user/create 服务端处理时要判断是否转为array 要考虑如果采用前者分号的问题 eval函数"
+            prop="url" v-show="isShow">
 
-        </el-row>
+            <el-input v-model="ruleForm.url" /> </el-form-item>
 
-        <el-row gutter="0" v-show="isShow">
 
-            <el-col :span="8">
 
-                <el-form-item
-                    label="url 如 array(user/create); 或者user/create  //user/create 服务端处理时要判断是否转为array 要考虑如果采用前者分号的问题 eval函数"
-                    prop="url">
+        <el-form-item label="url 后的请求参数" prop="params" v-show="isShow">
 
-                    <el-input v-model="ruleForm.url" /> </el-form-item>
+            <el-input v-model="ruleForm.params" /> </el-form-item>
 
-            </el-col>
 
 
+        <el-form-item label="Ajaxoptions" prop="ajaxoptions" v-show="isShow">
 
-            <el-col :span="8">
+            <el-input v-model="ruleForm.ajaxoptions" /> </el-form-item>
 
-                <el-form-item label="url 后的请求参数" prop="params">
 
-                    <el-input v-model="ruleForm.params" /> </el-form-item>
 
-            </el-col>
+        <el-form-item label="Htmloptions" prop="htmloptions" v-show="isShow">
 
+            <el-input v-model="ruleForm.htmloptions" /> </el-form-item>
 
 
-            <el-col :span="8">
 
-                <el-form-item label="Ajaxoptions" prop="ajaxoptions">
+        <el-form-item label="Is Visible" prop="is_visible" v-show="isShow">
 
-                    <el-input v-model="ruleForm.ajaxoptions" /> </el-form-item>
+            <el-input v-model="ruleForm.is_visible" /> </el-form-item>
 
-            </el-col>
 
 
+        <el-form-item label="谁的树 系统默认的是后台树0 " prop="uid" v-show="isShow">
 
-            <el-col :span="8">
+            <el-input v-model="ruleForm.uid" /> </el-form-item>
 
-                <el-form-item label="Htmloptions" prop="htmloptions">
 
-                    <el-input v-model="ruleForm.htmloptions" /> </el-form-item>
 
-            </el-col>
+        <el-form-item label="归类码表示用途的 一般只需要标记根的用途即可 也可以考虑用eav 但考虑到查询问题 所以引入了此字段" prop="group_code" v-show="isShow">
 
+            <el-input v-model="ruleForm.group_code" /> </el-form-item>
 
 
-            <el-col :span="8">
-
-                <el-form-item label="Is Visible" prop="is_visible">
-
-                    <el-input v-model="ruleForm.is_visible" /> </el-form-item>
-
-            </el-col>
-
-
-
-            <el-col :span="8">
-
-                <el-form-item label="谁的树 系统默认的是后台树0 " prop="uid">
-
-                    <el-input v-model="ruleForm.uid" /> </el-form-item>
-
-            </el-col>
-
-
-
-            <el-col :span="8">
-
-                <el-form-item label="归类码表示用途的 一般只需要标记根的用途即可 也可以考虑用eav 但考虑到查询问题 所以引入了此字段" prop="group_code">
-
-                    <el-input v-model="ruleForm.group_code" /> </el-form-item>
-
-            </el-col>
-
-
-
-
-
-        </el-row>
 
 
 
@@ -279,7 +229,139 @@ const ruleForm = reactive(
 
 const rules = reactive(
 
-    [])
+    {
+
+        "id": [
+
+            {
+
+                "type": "integer"
+
+            }
+
+        ],
+
+        "root": [
+
+            {
+
+                "type": "integer"
+
+            }
+
+        ],
+
+        "lft": [
+
+            {
+
+                "type": "integer"
+
+            }
+
+        ],
+
+        "rgt": [
+
+            {
+
+                "type": "integer"
+
+            }
+
+        ],
+
+        "level": [
+
+            {
+
+                "type": "integer"
+
+            }
+
+        ],
+
+        "label": [
+
+            {
+
+                "type": "string"
+
+            }
+
+        ],
+
+        "url": [
+
+            {
+
+                "type": "string"
+
+            }
+
+        ],
+
+        "params": [
+
+            {
+
+                "type": "string"
+
+            }
+
+        ],
+
+        "ajaxoptions": [
+
+            {
+
+                "type": "string"
+
+            }
+
+        ],
+
+        "htmloptions": [
+
+            {
+
+                "type": "string"
+
+            }
+
+        ],
+
+        "is_visible": [
+
+            {
+
+                "type": "integer"
+
+            }
+
+        ],
+
+        "uid": [
+
+            {
+
+                "type": "integer"
+
+            }
+
+        ],
+
+        "group_code": [
+
+            {
+
+                "type": "string"
+
+            }
+
+        ]
+
+    })
 
 // const submitForm = async (formEl: FormInstance | undefined) => {
 

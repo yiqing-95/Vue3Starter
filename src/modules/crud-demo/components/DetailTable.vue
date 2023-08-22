@@ -1,14 +1,13 @@
 <template>
-  <el-table ref="table" :data="tableData" :height="height" :style="{ fontSize: fontSize, fontFamily: fontFamily }"
-    :border="border" :stripe="stripe" :header-cell-style="{ 'text-align': headerCellStyle }" :cell-style="cellStyle"
-    @selection-change="handleSelectionChange"
-    >
+  <el-table ref="table" :data="tableData" >
     <!-- checkbox列 -->
 
     <!-- 序号列 -->
 
     <!-- attributes属性列 -->
-    <el-table-column prop="name" label="Name" width="180">
+    <!-- <el-table-column prop="name" label="Name" width="180"> -->
+      <!-- TODO: colmumn 配置需要暴露出去？ -->
+    <el-table-column prop="name" label="Name" width="130" >
         <template #default="{ row, column, $index }">
 
           <el-text class="mx-1" type="primary" tag="b">
@@ -17,7 +16,7 @@
 
         </template>
       </el-table-column>
-      <el-table-column prop="value" label="Value" width="180">
+      <el-table-column prop="value" label="Value" >
         <template #default="{ row, $index }">
           <!-- {{ row }} {{ $index }}
           {{ row.name }}

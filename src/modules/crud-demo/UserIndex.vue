@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, getCurrentInstance ,toRaw} from 'vue'
+import { ref, onMounted, getCurrentInstance, toRaw } from 'vue'
 // NOTE: 如果是按需引入的组件 需要引入对应的css才能显示样式哦
 import { ElMessage, ElMessageBox } from 'element-plus'
 
@@ -19,6 +19,7 @@ import {
 
 import FormDialog from './FormDialog.vue'
 import DetailDialog from './DetailDialog.vue'
+import DetailDrawer from './DetailDrawer.vue'
 
 // TODO: 这里缺少搜索🔍表单的实现
 
@@ -138,7 +139,7 @@ const handleCreate = async () => {
 
     dialogRef.value.openDialog()
     // 回填数据 || 调用接口
-    
+
 }
 
 const handleEdit = async (item) => {
@@ -156,46 +157,46 @@ const detailDialogRef = ref()
 const handleDetail = async (item) => {
 
     detailDialogRef.value.openDialog(item)
-    
+
 }
 
-const handleSave = async ({isEidt, form})=>{
-    console.log('[handle-save]:',isEdit)
-    console.log('[handle-save]2:',form)
-    console.log('[handle-save]2:',toRaw(form))
+const handleSave = async ({ isEidt, form }) => {
+    console.log('[handle-save]:', isEdit)
+    console.log('[handle-save]2:', form)
+    console.log('[handle-save]2:', toRaw(form))
     // let form = toRaw
 
-    if(isEdit.value){
+    if (isEdit.value) {
         // 更新对象
 
         // 1. 获取当前索引
-        let index = items.value.findIndex(item=>{
+        let index = items.value.findIndex(item => {
             // console.log('---',item.id, form.id)
-           return item.id === form.id
+            return item.id === form.id
         })
-        console.log('[handle-save][edit]:',index)
+        console.log('[handle-save][edit]:', index)
         // items.value[index] = {...toRaw(form)}
-        items.value[index] = {...form}
+        items.value[index] = { ...form }
 
-    }else{
+    } else {
         console.log('[handel-save]')
         // 新建对象
         let maxId = 0
         items.value.forEach(element => {
-            if(element.id> maxId){
+            if (element.id > maxId) {
                 maxId = element.id
             }
         })
         console.log('[max-id]:', maxId)
-        form.id = maxId+1
+        form.id = maxId + 1
 
         let rawForm = toRaw(form)
         rawForm.date = dayjs(rawForm.date).format('YYYY-MM-DD')
-        console.log('[new-data]:',rawForm)
+        console.log('[new-data]:', rawForm)
         // items.value.push(rawForm)
-        items.value.push({...rawForm})
-        console.log('[table-data:]',items.value)
-        
+        items.value.push({ ...rawForm })
+        console.log('[table-data:]', items.value)
+
     }
 
 }
@@ -213,9 +214,11 @@ const disabled = ref(false)
 
 const handleSizeChange = (val) => {
     console.log(`${val} items per page`)
+    pageSize.value = val
 }
 const handleCurrentChange = (val) => {
     console.log(`current page: ${val}`)
+    currentPage.value = val
 }
 
 // # === 搜索逻辑 ===
@@ -235,15 +238,15 @@ const searchForm = ref({
 
 const onSubmit = () => {
     console.log('[search]:', searchForm.value)
-    const searchData = searchForm.value 
+    const searchData = searchForm.value
 
-    if(searchData.name.length > 0){
-        
+    if (searchData.name.length > 0) {
+
         // 在当前数据集合中过滤
-        items.value = items.value.filter(item=>{
+        items.value = items.value.filter(item => {
             return item.name.match(searchData.name)
         })
-    }else{
+    } else {
         loadItems()
     }
 }
@@ -282,14 +285,14 @@ const handleSelectionChange = (val) => {
     // multipleSelection.value = val
     // console.log('[handleSelectionChange]:' ,val)
     let ids = []
-    val.forEach((item,idx)=>{
+    val.forEach((item, idx) => {
         ids.push(item.id)
     })
     multipleSelection.value = ids
     // console.log('[handleSelectionChange]:' , multipleSelection.value )
 }
 
-const handleDeleteSelection = ()=>{
+const handleDeleteSelection = () => {
     ElMessageBox.confirm(
         '确定删除所选数据?',
         'Warning',
@@ -309,7 +312,7 @@ const handleDeleteSelection = ()=>{
                 items.value = items.value.filter((item) => item.id != id)
             })
             multipleSelection.value = [] // 清空当前多选
-           
+
             // 调用刷新方法 刷新是要刷当前页 当前搜索条件下的数据 并非只是跳到第一页哦😯 所以搜索条件也要传递过去
             // 后端一般会处理删除页码范围问题 比如当前页最后一条数据删除后重新加载数据实际上会是前一页数据 或者第一页数据
             // loadItems()
@@ -326,7 +329,86 @@ const handleDeleteSelection = ()=>{
             })
         })
 }
+/** ## 处理排序 */
+const queryParams = reactive({
+    sortArr : [],
+})
 
+const handleSortChange0 = ({ column, prop, order }) => {
+    console.log('[handleSortChange]:', { column, prop, order })
+    // FIXME: 去掉一个多余的 这里因为是拷贝他人代码 所以暂时保留这样 闲暇时需要合并处理 一个就够了
+    changeSort(column, prop, order)
+}
+const handleHeadAddClass = ({ column })=>{
+    queryParams.sortArr.forEach(item => {
+        if (item.prop == column.property) {
+            column.order = item.order
+        }
+    })
+}
+// const changeSort = (column, prop, order) =>{
+const handleSortChange = (column, prop, order) =>{
+    console.log('[changeSort]begin:', column)
+    if (column.prop) {
+        console.log('[ if (column.prop)]:')
+        if (queryParams.sortArr.length > 0) {
+            queryParams.sortArr.forEach((item, index) => {
+                if (item.prop == column.prop) {
+                    queryParams.sortArr[index].order = column.order
+                }
+                let a = queryParams.sortArr.some(item => { return item.prop == column.prop })
+                if (!a) {
+                    queryParams.sortArr.push({
+                        prop: column.prop,
+                        order: column.order
+                    })
+                }
+            })
+        } else {
+            console.log('hi')
+            queryParams.sortArr.push({
+                prop: column.prop,
+                order: column.order
+            })
+        }
+    }
+    // this.getList();//请求后端获取数据，queryParams.sortArr为放多列排序数据的参数，格式为[{prop: 'ptState',order:'descending'}]
+    console.log('[changeSort]end:', queryParams)
+}
+
+
+/**
+ *  ## 监听分页 排序
+ *  实现方式很多种 还可以直接调用loadItems方法 传递分页参数即可 排序也是类似做法 排序跟分页从某种层面理解 都是查询参数变更了
+ *  但他们都只是整个查询参数的一部分 包括搜索表单   提交请求时除了带上自己变更的部分 还需要携带上次其他参数的值
+ *  也就是说 搜索表单+排序参数+分页参数 全部一起构成表格数据的请求参数
+ * 
+ *  关于名称
+ *  - 有用 state 有用form 
+ */
+watch(
+    [currentPage, pageSize],
+    (newValue, oldValue) => {
+        console.log('值发生了变更', 'new=> ', newValue, '🧱 old=> ', oldValue);
+
+        // 数组的slice方法也可以用于client端的分页模拟
+        /*
+        // 😄 把展示用的数据 越搞越少了！ 需要一个不动的源数据 表格只是一个源数据的窗口 🤔 计算属性可以么
+        items.value = items.value.filter(
+           (item, index) =>{
+
+               // index < state.page * state.limit &&
+               // index >= state.limit * (state.page - 1)
+             return  index < newValue[0] * newValue[1] && 
+               index >= newValue[1] * ( newValue[0] -1)
+           }
+       );
+       */
+    },
+    {
+        //  deep: true, immediate: true
+    }
+);
 </script>
 
 <template>
@@ -356,7 +438,8 @@ const handleDeleteSelection = ()=>{
         <el-col :span="16">
             <!-- 可以选择使用router-link 或者事件方式 -->
             <el-button type="primary" :icon="Plus" @click="handleCreate"> 添加</el-button>
-            <el-button type="danger" :icon="Delete" @click="handleDeleteSelection" v-if="multipleSelection.length > 0 ">删除多选</el-button>
+            <el-button type="danger" :icon="Delete" @click="handleDeleteSelection"
+                v-if="multipleSelection.length > 0">删除多选</el-button>
         </el-col>
         <el-col :span="8">
             <div class="grid-content ep-bg-purple" />
@@ -365,10 +448,11 @@ const handleDeleteSelection = ()=>{
     <el-row :gutter="10">
         <el-col :span="24">
 
-            <el-table ref="multipleTableRef" :data="items" style="" @selection-change="handleSelectionChange">
+            <el-table ref="multipleTableRef" :data="items" style="" @selection-change="handleSelectionChange"
+                @sort-change="handleSortChange" :header-cell-class-name="handleHeadAddClass">
                 <el-table-column type="selection" width="55" />
-                <el-table-column fixed prop="date" label="Date" width="150" />
-                <el-table-column prop="name" label="Name" width="120" />
+                <el-table-column fixed prop="date" label="Date" width="150" sortable='custom' />
+                <el-table-column prop="name" label="Name" width="120" sortable='custom' />
                 <el-table-column prop="state" label="State" width="120" />
                 <el-table-column prop="city" label="City" width="120" />
                 <el-table-column prop="address" label="Address" width="120" />
@@ -386,7 +470,7 @@ const handleDeleteSelection = ()=>{
 
         <div class="pagination-block">
             <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize"
-                :page-sizes="[100, 200, 300, 400]" :small="small" :disabled="disabled" :background="background"
+                :page-sizes="[2, 3, 4, 5, 10, 100, 200, 300, 400]" :small="small" :disabled="disabled" :background="background"
                 layout="total, sizes, prev, pager, next, jumper" :total="400" @size-change="handleSizeChange"
                 @current-change="handleCurrentChange" />
         </div>
@@ -398,7 +482,8 @@ const handleDeleteSelection = ()=>{
     </div>
 
     <FormDialog ref="dialogRef" :isEdit="isEdit" :title="dialogTitle" @on-saved="handleSave"></FormDialog>
-    <DetailDialog ref="detailDialogRef"  :title="'详情'" ></DetailDialog>
+    <!-- <DetailDialog ref="detailDialogRef"  :title="'详情'" ></DetailDialog> -->
+    <DetailDrawer ref="detailDialogRef" :title="'详情'"></DetailDrawer>
 </template>
 
 
